@@ -1,0 +1,14 @@
+TODO list for picante package
+
+General notes: Many functions are untested or outright broken. Do not use any of these functions for 'real' analysis without getting in touch with a project developer first.
+
+TODO
+-fix trait data input - currently most want a vector with names, should handle/check lack of names and allow data.frames (single or multiple columns).
+-fix null models - most assume presence-absence data but don't check
+-fix null models - implement heavy lifting in C code - see BB's email for a start
+-standardize use of null model functions
+-clean up/hide utility functions
+-fix Kcalc - new version doesn't work with non-ultrametric trees
+-phylosignal currently broken
+-implement contrib index and similar
+-qr on comdist as option
