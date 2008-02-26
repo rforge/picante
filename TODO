@@ -13,4 +13,5 @@ TODO
 -implement contrib index and similar
 -qr on comdist as option
 -fix .Rd files to pass CMD CHECK (keywords, etc.)
+-fix commit mailing list
 
