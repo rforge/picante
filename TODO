@@ -13,6 +13,5 @@ TODO
 -implement contrib index and similar
 -qr on comdist as option
 -fix .Rd files to pass CMD CHECK (etc.)
--fix commit mailing list
 -stack.phylocom() appears to R to be a stack() generic, do we change the name?
 
