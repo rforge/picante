@@ -6,11 +6,10 @@ TODO
 ====
 For 0.1
 -------
--fix trait data input - currently most functions expect a vector with names, should handle/check lack of names and allow data.frames (single or multiple columns).
--fix null models - most assume presence-absence data but don't check
--standardize use of null model functions (combine all into one function)
--standardize species distance metrics (combine all into one function)
--clean up/hide utility functions
+-fix trait data input - currently most functions expect a vector with names, should handle/check lack of names and warn
+-allow trait data to be a vector or a data.frame (single or multiple columns) (maybe for 0.2?)
+-clean up/hide utility functions, merge into one file
+-merge community structure and phylocom functions into one file?
 
 For 0.2
 -------
@@ -18,3 +17,5 @@ For 0.2
 -implement contrib index and similar
 -qr on comdist as option
 -trait gradient analysis and contrast diagnostics functions from DDA
+-taxaShuffle and comstruct functions - rewrite to use indices in place of names for efficiency
+
