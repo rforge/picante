@@ -1,21 +1,23 @@
 TODO list for picante package
 
-General notes: Many functions are untested or outright broken. Do not use any of these functions for 'real' analysis without getting in touch with a project developer first.
+General notes: Many functions are untested. Do not use any of these functions for 'real' analysis without getting in touch with a project developer first.
 
 TODO
 ====
 For 0.1
 -------
 -fix trait data input - currently most functions expect a vector with names, should handle/check lack of names and warn
--allow trait data to be a vector or a data.frame (single or multiple columns) (maybe for 0.2?)
--clean up/hide utility functions, merge into one file
--merge community structure and phylocom functions into one file?
+-clean up/hide utility functions, merge into one file/documentation
+-merge community structure and phylocom functions into one file
+-reinstate function to call out to phylocom executable and read results back in to R (maybe for 0.2?)
+-improve documentation especially for ses.mpd, ses.mnnd, phylosignal, ?
 
 For 0.2
 -------
 -implement null model heavy lifting in C code - see BB's email for a start
--implement contrib index and similar
+-allow trait data to be a vector or a data.frame (single or multiple columns)
+-implement contrib index and similar - move to phylobase format?
 -qr on comdist as option
 -trait gradient analysis and contrast diagnostics functions from DDA
 -taxaShuffle and comstruct functions - rewrite to use indices in place of names for efficiency
-
+-vignettes
