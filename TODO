@@ -6,14 +6,14 @@ TODO
 ====
 For 0.1
 -------
--fix trait data input - currently most functions expect a vector with names, should handle/check lack of names and warn
--clean up/hide utility functions, merge into one file/documentation
+-fix trait data input - currently most functions expect a vector with names, should handle/check lack of names and warn. Write helper function.
 -merge community structure and phylocom functions into one file
--reinstate function to call out to phylocom executable and read results back in to R (maybe for 0.2?)
+-add data files for example purposes (phylocom sample, traits, phylo)
 -improve documentation especially for ses.mpd, ses.mnnd, phylosignal, ?
 
 For 0.2
 -------
+-reinstate function to call out to phylocom executable and read results back in to R
 -implement null model heavy lifting in C code - see BB's email for a start
 -allow trait data to be a vector or a data.frame (single or multiple columns)
 -implement contrib index and similar - move to phylobase format?
