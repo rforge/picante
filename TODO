@@ -6,12 +6,13 @@ TODO
 ====
 For 0.1
 -------
--fix trait data input - currently most functions expect a vector with names, should handle/check lack of names and warn. Write helper function.
--merge community structure and phylocom functions into one file
--add data files for example purposes (phylocom sample, traits, phylo)
--improve documentation especially for ses.mpd, ses.mnnd, phylosignal, ?
+-fix trait data input - currently many functions expect a vector with names, should handle/check lack of names and warn. Write helper function.
+-Doublecheck name matching for comm.phylo.cor and ses.mpd/ses.mnnd
+-merge community structure and phylocom functions into one file?
+-improve documentation to pass R check
 
-For 0.2
+
+For 0.2 and beyond
 -------
 -reinstate function to call out to phylocom executable and read results back in to R
 -implement null model heavy lifting in C code - see BB's email for a start
