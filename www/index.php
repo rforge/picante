@@ -32,28 +32,29 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <!-- get project title  -->
 <!-- own website starts here, the following may be changed as you like -->
-
-<?php if ($handle=fopen('http://'.$domain.'/export/projtitl.php?group_name='.$group_name,'r')){
-$contents = '';
-while (!feof($handle)) {
-	$contents .= fread($handle, 8192);
-}
-fclose($handle);
-echo $contents; } ?>
+<h2>picante</h2>
+<h4><strong>P</strong>hylocom <strong>i</strong>ntegration, <strong>c</strong>ommunity <strong>a</strong>nalyses, <strong>n</strong>ull-models, <strong>t</strong>raits and <strong>e</strong>volution in R</h4>
 
 <!-- end of project description -->
 
-<p> The picante package implements a number of methods for measuring phylogenetic and trait diversity in ecological communities, phylogenetic signal, comparartive analyses (i.e. phylogenetically independent contrasts for circularly distributed traits), and utility functions for tree and data manipulation.</p>
+<p>The picante package aims to provide a comprehensive set of tools for analyzing the phylogenetic and trait diversity of ecological communities in R, along with a set of tools for other comparative analyses and manipulations of phenotypic and phylogenetic data.</p>
 
 <p>Current features include:
-<ul><li>Community phylogenetic and trait similarity measures (Webb's NRI/NTI, mean pairwise distance among co-occurring species (can be used with any interspecific distance measure), correlations between species co-occurrence and phylogenetic distances</li>
+<ul>
+<li>Community phylogenetic and trait similarity measures</li>
+    <ul>
+    <li>Webb's NRI/NTI and related measures of standardized effect size of community structure</li>
+    <li>Mean pairwise distance and mean distance to nearest neighbour among co-occurring species (can be used with any interspecific distance measure)</li>
+    <li>Correlations between species co-occurrence and phylogenetic distances</li>
+    </ul>
 <li>Phylogenetic signal (Blomberg et al's K statistic and P-value based on randomization test)</li>
-<li>Independent contrasts for traits with circular distributions (i.e. phenology)</li>
+<li>Independent contrasts for traits with circular distributions</li>
 <li>Null models for community and phylogeny randomization</li>
-<li>Utility functions to read/write data in Phylocom format</li>
+<li>Utility functions to read/write data in <a href="http://phylodiversity.net/phylocom/">Phylocom</a> format</li>
+<li>Tree plotting and labelling functions</li>
 </ul></p>
 
-<p>Initial release (version 0.1) scheduled for April 2008.</p>
+<p>Initial public release (version 0.1) scheduled for April 2008.</p>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
 
