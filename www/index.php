@@ -43,7 +43,17 @@ echo $contents; } ?>
 
 <!-- end of project description -->
 
-<p> No content added. </p>
+<p> The picante package implements a number of methods for measuring phylogenetic and trait diversity in ecological communities, phylogenetic signal, comparartive analyses (i.e. phylogenetically independent contrasts for circularly distributed traits), and utility functions for tree and data manipulation.</p>
+
+<p>Current features include:
+<ul><li>Community phylogenetic and trait similarity measures (Webb's NRI/NTI, mean pairwise distance among co-occurring species (can be used with any interspecific distance measure), correlations between species co-occurrence and phylogenetic distances</li>
+<li>Phylogenetic signal (Blomberg et al's K statistic and P-value based on randomization test)</li>
+<li>Independent contrasts for traits with circular distributions (i.e. phenology)</li>
+<li>Null models for community and phylogeny randomization</li>
+<li>Utility functions to read/write data in Phylocom format</li>
+</ul></p>
+
+<p>Initial release (version 0.1) scheduled for April 2008.</p>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
 

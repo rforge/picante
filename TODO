@@ -7,17 +7,17 @@ TODO
 For 0.1
 -------
 -fix trait data input - currently many functions expect a vector with names, should handle/check lack of names and warn. Write helper function.
--Doublecheck name matching for comm.phylo.cor and ses.mpd/ses.mnnd
+-Doublecheck name matching for comm.phylo.cor and mpd/mnnd/ses.mpd/ses.mnnd
 -merge community structure and phylocom functions into one file?
--improve documentation to pass R check
-
+-improve documentation for public release
 
 For 0.2 and beyond
 -------
 -reinstate function to call out to phylocom executable and read results back in to R
 -implement null model heavy lifting in C code - see BB's email for a start
 -allow trait data to be a vector or a data.frame (single or multiple columns)
--implement contrib index and similar - move to phylobase format?
+-implement contrib index and similar
+-move to phylobase format
 -qr on comdist as option
 -trait gradient analysis and contrast diagnostics functions from DDA
 -taxaShuffle and comstruct functions - rewrite to use indices in place of names for efficiency
