@@ -56,7 +56,11 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <p>Initial public release (version 0.1) scheduled for April 2008.</p>
 
-<p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
+<p>Maintainer: Steve Kembel</p>
+
+<p>Contributors: David Ackerly, Simon Blomberg, Peter Cowan,  Steve Kembel, Cam Webb<p>
+
+<p>The <strong>project summary page</strong> is <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>.</p>
 
 </body>
 </html>
