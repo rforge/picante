@@ -111,3 +111,4 @@ function (samp, dis, null.model = c("taxa.labels", "sample.pool",
     data.frame(ntaxa=specnumber(samp),mnnd.obs, mnnd.rand.mean, mnnd.rand.sd, mnnd.obs.rank, 
         mnnd.obs.z, mnnd.obs.p=mnnd.obs.rank/(runs+1),runs=runs, row.names = row.names(samp))
 }
+# test
