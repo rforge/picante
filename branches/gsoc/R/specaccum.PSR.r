@@ -30,7 +30,9 @@ specaccum.PSR<-function (samp, Cmatrix, permutations = 100, method = "random", .
   perm <- array(dim = c(n, permutations))
   for (i in 1:permutations)
   {
-    perm[, i] <- accumulator(x, sample(n),Cmatrix)
+    r.x=0
+    while(length(r.x)<n){r.x <- accumulator(x, sample(n),Cmatrix)}
+    perm[, i]<-r.x
   }
   sites <- 1:n
   specaccum <- apply(perm, 1, mean)
