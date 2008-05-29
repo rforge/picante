@@ -170,7 +170,7 @@ if (is.null(dim(samp))) #if the samp matrix only has one site
 }
 
 if(compute.var==FALSE) {
-  return(PSVout)
+  return(data.frame(PSVout))
 } else {
 
   PSVvar<-NULL
@@ -208,6 +208,19 @@ if(compute.var==FALSE) {
   {
     PSVout[g,3]<-PSVvar[PSVout[g,2]-1,2]
   }
-  return(PSVout)
+  return(data.frame(PSVout))
+  }
+}
+
+PSRcalc <- function(samp,tree,compute.var=TRUE){
+  PSVout<-PSVcalc(samp,tree,compute.var)
+  PSRout<-cbind(PSVout[,1]*PSVout[,2],PSVout[,2])
+  if(compute.var!=TRUE) {
+    colnames(PSRout)<-c("PSR","SR")
+    return(data.frame(PSRout))
+  } else {
+    PSRout<-cbind(PSRout,PSVout[,3]*(PSVout[,2])^2)       
+    colnames(PSRout)<-c("PSR","SR","vars")
+    return(data.frame(PSRout))
   }
 }
