@@ -1,4 +1,4 @@
-`match.tree` <- function(phy, x, taxacol, traitcol, strict = FALSE) {
+`.match.tree` <- function(phy, x, taxacol, traitcol, strict = FALSE) {
 	# some data input error checking, all taxa in tree and x
 	# no missing data values
 	stopifnot(traitcol %in% names(x), taxacol %in% names(x),
@@ -68,12 +68,6 @@ function(phy) {
 	phy$ages = ages
 	return(phy)
 	}
-
-`phylo2phylog` <-
-function(phy, ...) {
-    if(!require(ade4)) {stop("This function requires the ade4 package")}
-    newick2phylog(write.tree(phy),...)
-}
 
 `sortColumns` <-
 function(x) {
