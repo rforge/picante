@@ -121,6 +121,7 @@ function (samp, dis, null.model = c("taxa.labels", "sample.pool",
 PSVcalc<-function(samp,tree,compute.var=TRUE){
   # Make samp matrix a pa matrix
   samp[samp>0]<-1
+  
   flag=0
   if (is.null(dim(samp))) #if the samp matrix only has one site
   {
@@ -130,12 +131,17 @@ PSVcalc<-function(samp,tree,compute.var=TRUE){
 
   if(is(tree)[1]=="phylo")
   {
+    tree<-pruneMissing(samp[1,],tree)$tree
     # Make sure that the species line up
     samp<-samp[,tree$tip.label]
     # Make a correlation matrix of the species pool phylogeny
     Cmatrix<-vcv.phylo(tree,cor=T)
   } else {
     Cmatrix<-tree
+    species<-colnames(samp)
+    preval<-colSums(samp)/sum(samp)
+    species<-species[preval>0]
+    Cmatrix<-Cmatrix[species,species]
     samp<-samp[,colnames(Cmatrix)]
   }
   
@@ -251,12 +257,17 @@ PSEcalc<-function(samp,tree){
 
   if(is(tree)[1]=="phylo")
   {
+    tree<-pruneMissing(samp[1,],tree)$tree
     # Make sure that the species line up
     samp<-samp[,tree$tip.label]
     # Make a correlation matrix of the species pool phylogeny
     Cmatrix<-vcv.phylo(tree,cor=T)
   } else {
     Cmatrix<-tree
+    species<-colnames(samp)
+    preval<-colSums(samp)/sum(samp)
+    species<-species[preval>0]
+    Cmatrix<-Cmatrix[species,species]
     samp<-samp[,colnames(Cmatrix)]
   }
   
@@ -311,12 +322,17 @@ PSCcalc<-function(samp,tree){
 
   if(is(tree)[1]=="phylo")
   {
+    tree<-pruneMissing(samp[1,],tree)$tree
     # Make sure that the species line up
     samp<-samp[,tree$tip.label]
     # Make a correlation matrix of the species pool phylogeny
     Cmatrix<-vcv.phylo(tree,cor=T)
   } else {
     Cmatrix<-tree
+    species<-colnames(samp)
+    preval<-colSums(samp)/sum(samp)
+    species<-species[preval>0]
+    Cmatrix<-Cmatrix[species,species]
     samp<-samp[,colnames(Cmatrix)]
   }
 
@@ -368,12 +384,17 @@ spp.PSVcalc<-function(samp,tree){
   }  
   if(is(tree)[1]=="phylo")
   {
+    tree<-pruneMissing(samp[1,],tree)$tree
     # Make sure that the species line up
     samp<-samp[,tree$tip.label]
     # Make a correlation matrix of the species pool phylogeny
     Cmatrix<-vcv.phylo(tree,cor=T)
   } else {
     Cmatrix<-tree
+    species<-colnames(samp)
+    preval<-colSums(samp)/sum(samp)
+    species<-species[preval>0]
+    Cmatrix<-Cmatrix[species,species]
     samp<-samp[,colnames(Cmatrix)]
   }
   # reduce given Cmatrix to the species observed in samp
@@ -422,3 +443,4 @@ PSDcalc<-function(samp,tree,compute.var=TRUE){
     return(data.frame(PSDout))
   }
 }
+
