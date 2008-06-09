@@ -444,3 +444,35 @@ PSDcalc<-function(samp,tree,compute.var=TRUE){
   }
 }
 
+sum.bl<-function(samp,tree){
+  
+  # Make sure that the species line up
+  tree<-pruneMissing(samp[1,],tree)$tree
+  samp<-samp[,tree$tip.label]
+  species<-colnames(samp)
+  
+  # reduce given Cmatrix to the species observed in samp
+  SR<-rowSums(samp)
+  samp<-samp[SR>1,] # prune out locations with <2 species
+  SR<-SR[SR>1]
+
+  # numbers of locations and species
+  nlocations=dim(samp)[1]
+  nspecies=dim(samp)[2]
+
+  ##################################
+  # calculate observed PDs
+  #
+  PDs=NULL
+
+  for(i in 1:nlocations)
+  {  
+    index<-species[samp[i,]==0]	#species not in sample
+    sub.tree<-drop.tip(tree,index)
+    PDs<-c(PDs,sum(sub.tree$edge.length))
+  }
+  
+  PDout<-data.frame(cbind(PDs,SR))
+  rownames(PDout)<-rownames(samp) 
+  return(PDout)
+}
