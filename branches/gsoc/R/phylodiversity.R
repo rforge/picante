@@ -131,7 +131,7 @@ PSVcalc<-function(samp,tree,compute.var=TRUE){
 
   if(is(tree)[1]=="phylo")
   {
-    tree<-pruneMissing(samp[1,],tree)$tree
+    tree<-prune.sample(samp,tree)
     # Make sure that the species line up
     samp<-samp[,tree$tip.label]
     # Make a correlation matrix of the species pool phylogeny
@@ -257,7 +257,7 @@ PSEcalc<-function(samp,tree){
 
   if(is(tree)[1]=="phylo")
   {
-    tree<-pruneMissing(samp[1,],tree)$tree
+    tree<-prune.sample(samp,tree) 
     # Make sure that the species line up
     samp<-samp[,tree$tip.label]
     # Make a correlation matrix of the species pool phylogeny
@@ -322,7 +322,7 @@ PSCcalc<-function(samp,tree){
 
   if(is(tree)[1]=="phylo")
   {
-    tree<-pruneMissing(samp[1,],tree)$tree
+    tree<-prune.sample(samp,tree)
     # Make sure that the species line up
     samp<-samp[,tree$tip.label]
     # Make a correlation matrix of the species pool phylogeny
@@ -384,7 +384,7 @@ spp.PSVcalc<-function(samp,tree){
   }  
   if(is(tree)[1]=="phylo")
   {
-    tree<-pruneMissing(samp[1,],tree)$tree
+    tree<-prune.sample(samp,tree)
     # Make sure that the species line up
     samp<-samp[,tree$tip.label]
     # Make a correlation matrix of the species pool phylogeny
