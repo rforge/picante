@@ -36,10 +36,14 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <h2><strong>P</strong>hylocom <strong>i</strong>ntegration, <strong>c</strong>ommunity <strong>a</strong>nalyses, <strong>n</strong>ull-models, <strong>t</strong>raits and <strong>e</strong>volution in R</h2>
 
 <!-- end of project description -->
-
+<h2>About picante</h2>
 <p>The picante package aims to provide a comprehensive set of tools for analyzing the phylogenetic and trait diversity of ecological communities in R, along with a set of tools for other comparative analyses and manipulations of phenotypic and phylogenetic data.</p>
+<p><strong>Package maintainer:</strong> Steve Kembel</p>
+<p><strong>Contributors:</strong> David Ackerly, Simon Blomberg, Peter Cowan,
+    Matthew Helmus, Steve Kembel, Cam Webb<p>
+<p>Development of picante has been supported by <a href="http://nserc.ca">NSERC</a>, <a href="http://www.nescent.org/index.php">NESCent</a>, and the <a href="http://code.google.com/soc/2008/">Google Summer of Code</a>.
 
-<p><strong>Current features:</strong>
+<h2>Current features</h2>
 <ul>
 <li>Community phylogenetic and trait similarity measures</li>
     <ul>
@@ -52,16 +56,20 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <li>Null models for community and phylogeny randomization</li>
 <li>Utility functions to read/write data in <a href="http://phylodiversity.net/phylocom/">Phylocom</a> format</li>
 <li>Tree plotting and labelling functions</li>
-</ul></p>
+</ul>
 
-<p>Version 0.1-2 (initial public release) was submitted to CRAN on May 30 2008. Downloading from CRAN will soon be the recommended way to install picante, but in the meantime you can grab the latest build of the package <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</p>
+<h2>Obtaining picante</h2>
+<ul>
+<li>Version 0.1-2 (stable) is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
+</ul>
 
-<p><strong>Maintainer:</strong> Steve Kembel</p>
-
-<p><strong>Contributors:</strong> David Ackerly, Simon Blomberg, Peter Cowan,
-    Matthew Helmus, Steve Kembel, Cam Webb<p>
-
+<h2>Obtaining help and more information about picante</h2>
 <p>The <strong>project summary page</strong> with bug reporting, feature requests, discussions, mailing lists, and access to the source code is located <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>.</p>
 
+<h2>Release history</h2>
+<ul>
+<li>Version 0.1-2: Initial public release</li>
+<ul>
 </body>
 </html>
