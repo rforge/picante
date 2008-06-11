@@ -32,6 +32,6 @@ The function returns an object of class \code{"specaccum"} with items:
               \cr Helmus M.R., Bland T.J., Williams C.K. & Ives A.R. (2007) Phylogenetic measures of biodiversity. American Naturalist, 169, E68-E83 }
 \author{ Matthew Helmus \email{mrhelmus@gmail.com}
  }
-\seealso{ \code{\link{psr}}, \code{\link{specaccum}}}
+\seealso{ \code{\link{psr}}, \code{\link[vegan]{specaccum}}}
 
 \keyword{univar}

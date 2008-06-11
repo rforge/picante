@@ -13,7 +13,7 @@
 psv(samp,tree,compute.var=TRUE)
 psr(samp,tree,compute.var=TRUE)
 pse(samp,tree)
-psc(samp,tree,compute.var=TRUE)
+psc(samp,tree)
 psd(samp,tree,compute.var=TRUE)
 psv.spp(samp,tree)
 }
