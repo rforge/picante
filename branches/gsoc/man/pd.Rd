@@ -24,9 +24,9 @@ pd(samp, tree)
 
 
 \references{ Faith D.P. (1992) Conservation evaluation and phylogenetic diversity. Biological Conservation, 61, 1-10 }
-\author{ Matthew Helmus \email{mrhelmus@gmail.com}
+\author{ Matthew Helmus \email{mrhelmus@gmail.com}\cr
          Jonathan Davies \email{davies@nceas.ucsb.edu}
  }
-\seealso{ \code{\link{calcPSR}} }
+\seealso{ \code{\link{psr}} }
 
 \keyword{univar}

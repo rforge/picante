@@ -1,4 +1,4 @@
-specaccum.PSR<-function (samp, tree, permutations = 100, method = "random", ...)
+specaccum.psr<-function (samp, tree, permutations = 100, method = "random", ...)
 {
 
 #function adapted from the vegan package specaccum
@@ -19,7 +19,7 @@ specaccum.PSR<-function (samp, tree, permutations = 100, method = "random", ...)
     xx<-x
     xx[1:n,1:p]<-0
     xx[apply(x[ind, ], 2, cumsum)>0]<-1
-    PSV<-PSVcalc(xx,tree,compute.var=FALSE)
+    PSV<-psv(xx,tree,compute.var=FALSE)
     PSV[,1]*PSV[,2]
   }
   METHODS <- c("collector", "random", "exact", "rarefaction",

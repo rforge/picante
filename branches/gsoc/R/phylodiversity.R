@@ -118,7 +118,7 @@ function (samp, dis, null.model = c("taxa.labels", "sample.pool",
 }
 
 
-PSVcalc<-function(samp,tree,compute.var=TRUE){
+psv<-function(samp,tree,compute.var=TRUE){
   # Make samp matrix a pa matrix
   samp[samp>0]<-1
   
@@ -226,8 +226,8 @@ PSVcalc<-function(samp,tree,compute.var=TRUE){
 }
 
 
-PSRcalc <- function(samp,tree,compute.var=TRUE){
-  PSVout<-PSVcalc(samp,tree,compute.var)
+psr <- function(samp,tree,compute.var=TRUE){
+  PSVout<-psv(samp,tree,compute.var)
   if(is.null(dim(PSVout))==TRUE) 
   {
     PSRout<-data.frame(cbind(PSVout[1]*PSVout[2],PSVout[2]))
@@ -247,7 +247,7 @@ PSRcalc <- function(samp,tree,compute.var=TRUE){
   }
 }
 
-PSEcalc<-function(samp,tree){
+pse<-function(samp,tree){
   flag=0
   if (is.null(dim(samp))) #if the samp matrix only has one site
   {
@@ -310,7 +310,7 @@ PSEcalc<-function(samp,tree){
   }
 }
 
-PSCcalc<-function(samp,tree){
+psc<-function(samp,tree){
   # Make samp matrix a pa matrix
   samp[samp>0]<-1
   flag=0
@@ -375,7 +375,7 @@ PSCcalc<-function(samp,tree){
   }
 }
 
-spp.PSVcalc<-function(samp,tree){
+psv.spp<-function(samp,tree){
   # Make samp matrix a pa matrix
   samp[samp>0]<-1
   if (is.null(dim(samp))) #if the samp matrix only has one site
@@ -406,7 +406,7 @@ spp.PSVcalc<-function(samp,tree){
   Cmatrix<-Cmatrix[indexcov,indexcov]
   samp<-samp[,indexcov]
 
-  obs.PSV<-mean(PSVcalc(samp,Cmatrix,compute.var=FALSE)[,1])
+  obs.PSV<-mean(psv(samp,Cmatrix,compute.var=FALSE)[,1])
 
   # numbers of locations and species
   nlocations<-dim(samp)[1]
@@ -417,7 +417,7 @@ spp.PSVcalc<-function(samp,tree){
   {
     spp.samp<-samp[,-j]
     spp.Cmatrix<-Cmatrix[-j,-j]
-    spp.PSV<-mean(PSVcalc(spp.samp,spp.Cmatrix,compute.var=FALSE)[,1])
+    spp.PSV<-mean(psv(spp.samp,spp.Cmatrix,compute.var=FALSE)[,1])
     spp.PSVs<-c(spp.PSVs,spp.PSV)
   }
   spp.PSVout<-(spp.PSVs-obs.PSV)/sum(abs(spp.PSVs-obs.PSV))
@@ -425,19 +425,19 @@ spp.PSVcalc<-function(samp,tree){
   return(spp.PSVout)
 }
 
-PSDcalc<-function(samp,tree,compute.var=TRUE){
+psd<-function(samp,tree,compute.var=TRUE){
   if (is.null(dim(samp))) #if the samp matrix only has one site
   {
-    PSDout<-data.frame(c(PSVcalc(samp,tree,compute.var)[1],PSCcalc(samp,tree)[1],PSRcalc(samp,tree,compute.var)[1],PSEcalc(samp,tree)))
+    PSDout<-data.frame(c(psv(samp,tree,compute.var)[1],psc(samp,tree)[1],psr(samp,tree,compute.var)[1],pse(samp,tree)))
     names(PSDout)<-c("PSV","PSC","PSR","PSE","SR")
     return(PSDout)
   } else {
     if (compute.var==TRUE)
     {
-      PSDout<-cbind(PSVcalc(samp,tree,compute.var)[,c(1,3)],PSCcalc(samp,tree)[,1],PSRcalc(samp,tree,compute.var)[,c(1,3)],PSEcalc(samp,tree))
+      PSDout<-cbind(psv(samp,tree,compute.var)[,c(1,3)],psc(samp,tree)[,1],psr(samp,tree,compute.var)[,c(1,3)],pse(samp,tree))
       colnames(PSDout)<-c("PSV","var.PSV","PSC","PSR","var.PSR","PSE","SR")
     } else {
-      PSDout<-cbind(PSVcalc(samp,tree,compute.var)[,1],PSCcalc(samp,tree)[,1],PSRcalc(samp,tree,compute.var)[,1],PSEcalc(samp,tree))
+      PSDout<-cbind(psv(samp,tree,compute.var)[,1],psc(samp,tree)[,1],psr(samp,tree,compute.var)[,1],pse(samp,tree))
       colnames(PSDout)<-c("PSV","PSC","PSR","PSE","SR")
     }
     return(data.frame(PSDout))

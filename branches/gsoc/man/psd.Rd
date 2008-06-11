@@ -1,33 +1,21 @@
-\name{PSDcalc}
-\alias{PSDcalc}
-\alias{PSVcalc}
-\alias{PSRcalc}
-\alias{PSEcalc}
-\alias{PSCcalc}
-\alias{spp.PSVcalc}
-\alias{PSV}
-\alias{PSR}
-\alias{PSE}
-\alias{PSD}
-\alias{PSC}
-\alias{spp.psvcalc}
+\name{psd}
+\alias{psd}
+\alias{psv.spp}
 \alias{psv}
 \alias{psr}
 \alias{pse}
-\alias{psd}
 \alias{psc}
-\alias{spp.PSV}
 \title{ Phylogenetic Species Diversity Metrics }
 \description{
   Calculate the bounded phylogenetic biodiversity metrics: phylogenetic species variability, richness, evenness and clustering for one or multiple samples.
 }
 \usage{
-PSVcalc(samp,tree,compute.var=TRUE)
-PSRcalc(samp,tree,compute.var=TRUE)
-PSEcalc(samp,tree)
-PSCcalc(samp,tree,compute.var=TRUE)
-PSDcalc(samp,tree,compute.var=TRUE)
-spp.PSVcalc(samp,tree)
+psv(samp,tree,compute.var=TRUE)
+psr(samp,tree,compute.var=TRUE)
+pse(samp,tree)
+psc(samp,tree,compute.var=TRUE)
+psd(samp,tree,compute.var=TRUE)
+psv.spp(samp,tree)
 }
 
 \arguments{
@@ -40,7 +28,7 @@ spp.PSVcalc(samp,tree)
  shared by all species in a community. The expected value of PSV is statistically independent of species richness, is one when all species in a sample
  are unrelated (i.e., a star phylogeny) and approaches zero as species become more related. PSV is directly related to mean phylogenetic distance. The 
  expected variance around PSV for any sample of a particular species richness can be approximated. 
- To address how individual species contribute to the mean PSV of a data set, the function spp.PSVcalc gives signed proportions of the total deviation 
+ To address how individual species contribute to the mean PSV of a data set, the function psv.spp gives signed proportions of the total deviation 
  from the mean PSV that occurs when all species are removed from the data set one at a time. The absolute values of these \dQuote{species effects} 
  tend to positively correlate with species prevalence. 
  \cr
@@ -72,7 +60,7 @@ spp.PSVcalc(samp,tree)
 
 \references{ Helmus M.R., Bland T.J., Williams C.K. & Ives A.R. (2007) Phylogenetic measures of biodiversity. American Naturalist, 169, E68-E83 }
 \author{ Matthew Helmus \email{mrhelmus@gmail.com} }
-\seealso{ \code{\link{mpd}} ,\code{\link{mnnd}} }
+\seealso{ \code{\link{mpd}} ,\code{\link{mnnd}}, \code{\link{specaccum.psr}} }
 
 \keyword{univar}
 
