@@ -444,10 +444,10 @@ PSDcalc<-function(samp,tree,compute.var=TRUE){
   }
 }
 
-sum.bl<-function(samp,tree){
+pd<-function(samp,tree){
   
   # Make sure that the species line up
-  tree<-pruneMissing(samp[1,],tree)$tree
+  tree<-prune.sample(samp,tree)
   samp<-samp[,tree$tip.label]
   species<-colnames(samp)
   
