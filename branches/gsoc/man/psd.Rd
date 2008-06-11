@@ -28,7 +28,7 @@ psv.spp(samp,tree)
  shared by all species in a community. The expected value of PSV is statistically independent of species richness, is one when all species in a sample
  are unrelated (i.e., a star phylogeny) and approaches zero as species become more related. PSV is directly related to mean phylogenetic distance. The 
  expected variance around PSV for any sample of a particular species richness can be approximated. 
- To address how individual species contribute to the mean PSV of a data set, the function psv.spp gives signed proportions of the total deviation 
+ To address how individual species contribute to the mean PSV of a data set, the function \code{psv.spp} gives signed proportions of the total deviation 
  from the mean PSV that occurs when all species are removed from the data set one at a time. The absolute values of these \dQuote{species effects} 
  tend to positively correlate with species prevalence. 
  \cr
