@@ -1,4 +1,4 @@
-specaccum.PSR<-function (samp, Cmatrix, permutations = 100, method = "random", ...)
+specaccum.PSR<-function (samp, tree, permutations = 100, method = "random", ...)
 {
 
 #function adapted from the vegan package specaccum
@@ -12,14 +12,14 @@ specaccum.PSR<-function (samp, Cmatrix, permutations = 100, method = "random", .
     n <- nrow(x)
     p <- ncol(x)
   }
-  accumulator <- function(x,ind,Cmatrix)
+  accumulator <- function(x,ind,tree)
   {
     n <- nrow(x)
     p <- ncol(x)
     xx<-x
     xx[1:n,1:p]<-0
     xx[apply(x[ind, ], 2, cumsum)>0]<-1
-    PSV<-PSVcalc(xx,Cmatrix,compute.var=FALSE)
+    PSV<-PSVcalc(xx,tree,compute.var=FALSE)
     PSV[,1]*PSV[,2]
   }
   METHODS <- c("collector", "random", "exact", "rarefaction",
@@ -31,7 +31,7 @@ specaccum.PSR<-function (samp, Cmatrix, permutations = 100, method = "random", .
   for (i in 1:permutations)
   {
     r.x=0
-    while(length(r.x)<n){r.x <- accumulator(x, sample(n),Cmatrix)}
+    while(length(r.x)<n){r.x <- accumulator(x, sample(n),tree)}
     perm[, i]<-r.x
   }
   sites <- 1:n
