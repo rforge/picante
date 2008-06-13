@@ -26,7 +26,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <! --- R-Forge Logo --- >
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
 <tr><td>
-<a href="/"><img src="<?php echo $themeroot; ?>/images/logo.png" border="0" alt="R-Forge Logo" /> </a> </td> </tr>
+<a href="/"><img src="<?php echo $themeroot; ?>/images/logo.png" border="0" alt="R-Forge Logo" /> </a> </td>
+</tr>
 </table>
 
 
@@ -68,8 +69,15 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <p>The <strong>project summary page</strong> with bug reporting, feature requests, discussions, mailing lists, and access to the source code is located <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>.</p>
 
 <h2>Release history</h2>
-<ul>
+<p><ul>
 <li>Version 0.1-2: Initial public release</li>
-<ul>
+</ul>
+</p>
+
+<p><a href="http://www4.clustrmaps.com/counter/maps.php?url=http://picante.r-forge.r-project.org/" id="clustrMapsLink"><img src="http://www4.clustrmaps.com/counter/index2.php?url=http://picante.r-forge.r-project.org/" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onerror="this.onerror=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com';" />
+</a>
+</p>
+
 </body>
 </html>
+
