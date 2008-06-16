@@ -145,18 +145,8 @@ psv<-function(samp,tree,compute.var=TRUE){
     samp<-samp[,colnames(Cmatrix)]
   }
   
-    # reduce given Cmatrix to the species observed in samp
-    SR<-rowSums(samp)
-    samp<-samp[SR>1,] # prune out locations with <2 species
-    SR<-SR[SR>1]
-  
-    #cull the species that are not found in the samp set after all communities with 1 species are removed
-    preval<-colSums(samp)/sum(samp)
-    indexcov<-preval>0
-    Cmatrix<-Cmatrix[indexcov,indexcov]
-    samp<-samp[,indexcov]
-  
     # numbers of locations and species
+    SR<-rowSums(samp)
     nlocations<-dim(samp)[1]
     nspecies<-dim(samp)[2]
   
@@ -169,11 +159,16 @@ psv<-function(samp,tree,compute.var=TRUE){
     {
       index<-seq(1:nrow(Cmatrix))[samp[i,]==1]	#species present
       n<-length(index)			#number of species present
-      C<-Cmatrix[index,index]	#C for individual locations
-      PSV<-(n*sum(diag(as.matrix(C)))-sum(C))/(n*(n-1))
-      PSVs<-c(PSVs,PSV)
+      if(n>1)
+      {
+        C<-Cmatrix[index,index]	#C for individual locations
+        PSV<-(n*sum(diag(as.matrix(C)))-sum(C))/(n*(n-1))
+      } else {
+        PSV<-NA
+      }
+        PSVs<-c(PSVs,PSV)
     }
-      PSVout<-cbind(PSVs,SR)
+    PSVout<-cbind(PSVs,SR)
   
   if(flag==2)
   {
@@ -218,13 +213,17 @@ psv<-function(samp,tree,compute.var=TRUE){
   
       for (g in 1:nlocations)
       {
-        PSVout[g,3]<-PSVvar[PSVout[g,2]-1,2]
+        if(PSVout[g,2]>1)
+        {
+          PSVout[g,3]<-PSVvar[PSVout[g,2]-1,2]
+        } else {
+          PSVout[g,3]<-NA
+        }
       }
       return(data.frame(PSVout))
     }
   }
 }
-
 
 psr <- function(samp,tree,compute.var=TRUE){
   PSVout<-psv(samp,tree,compute.var)
@@ -273,19 +272,8 @@ pse<-function(samp,tree){
     samp<-samp[,colnames(Cmatrix)]
   }
   
-  # reduce given Cmatrix to the species observed in samp
-  SR<-apply(samp>0,1,sum)
-  # prune out locations with <2 species
-  samp<-samp[SR>1,]
-  SR<-SR[SR>1]
-
-  #cull the species that are not found in the samp set after all communities with 1 species are removed
-  preval<-colSums(samp)/sum(samp)
-  indexcov<-preval>0
-  Cmatrix<-Cmatrix[indexcov,indexcov]
-  samp<-samp[,indexcov]
-
   # numbers of locations and species
+  SR<-apply(samp>0,1,sum)
   nlocations<-dim(samp)[1]
   nspecies<-dim(samp)[2]
 
@@ -294,12 +282,15 @@ pse<-function(samp,tree){
   PSEs<-NULL
   for(i in 1:nlocations){
     index<-seq(1,ncol(Cmatrix))[samp[i,]>0]	  # species present
-    C<-Cmatrix[index,index]		                #C for individual locations
     n<-length(index)                          #location species richness
+    if(n>1)
+    {    
+    C<-Cmatrix[index,index]		                #C for individual locations
     N<-sum(samp[i,])                          #location total abundance
     M<-samp[i,samp[i,]>0]                  #species abundance column
     mbar<-mean(M)                             #mean species abundance
     PSE<-(N*t(diag(as.matrix(C)))%*%M-t(M)%*%as.matrix(C)%*%M)/(N^2-N*mbar)   #phylogenetic species evenness
+    } else {PSE<-NA}
     PSEs<-c(PSEs,PSE)
   }
   PSEout=cbind(PSEs,SR)
@@ -311,6 +302,8 @@ pse<-function(samp,tree){
     return(data.frame(PSEout))
   }
 }
+
+
 
 psc<-function(samp,tree){
   # Make samp matrix a pa matrix
@@ -338,18 +331,8 @@ psc<-function(samp,tree){
     samp<-samp[,colnames(Cmatrix)]
   }
 
-  # reduce given Cmatrix to the species observed in samp
-  SR<-rowSums(samp)
-  samp<-samp[SR>1,] # prune out locations with <2 species
-  SR<-SR[SR>1]
-
-  #cull the species that are not found in the samp set after all communities with 1 species are removed
-  preval<-colSums(samp)/sum(samp)
-  indexcov<-preval>0
-  Cmatrix<-Cmatrix[indexcov,indexcov]
-  samp<-samp[,indexcov]
-
   # numbers of locations and species
+  SR<-rowSums(samp)
   nlocations<-dim(samp)[1]
   nspecies<-dim(samp)[2]
 
@@ -362,10 +345,13 @@ psc<-function(samp,tree){
   {
     index<-seq(1:nrow(Cmatrix))[samp[i,]==1]	#species present
     n<-length(index)			#number of species present
-    C<-Cmatrix[index,index]	#C for individual locations
-    diag(C)<--1
-    PSC<-sum(apply(C,1,max))/n
-    PSCs<-c(PSCs,PSC)
+    if(n>1)
+    {    
+      C<-Cmatrix[index,index]	#C for individual locations
+      diag(C)<--1
+      PSC<-sum(apply(C,1,max))/n
+    } else {PSC<-NA}
+      PSCs<-c(PSCs,PSC)
   }
     PSCout<-cbind(PSCs,SR)
  if (flag==2)
@@ -453,12 +439,8 @@ pd<-function(samp,tree){
   samp<-samp[,tree$tip.label]
   species<-colnames(samp)
   
-  # reduce given Cmatrix to the species observed in samp
-  SR<-rowSums(samp)
-  samp<-samp[SR>1,] # prune out locations with <2 species
-  SR<-SR[SR>1]
-
   # numbers of locations and species
+  SR<-rowSums(samp)
   nlocations=dim(samp)[1]
   nspecies=dim(samp)[2]
 
@@ -470,8 +452,14 @@ pd<-function(samp,tree){
   for(i in 1:nlocations)
   {  
     index<-species[samp[i,]==0]	#species not in sample
-    sub.tree<-drop.tip(tree,index)
-    PDs<-c(PDs,sum(sub.tree$edge.length))
+    if(length(index)>=(nspecies-1))
+    {
+      PD<-NA
+    } else {
+      sub.tree<-drop.tip(tree,index)
+      PD<-sum(sub.tree$edge.length)
+    }
+      PDs<-c(PDs,PD)
   }
   
   PDout<-data.frame(cbind(PDs,SR))
