@@ -238,10 +238,12 @@ psr <- function(samp,tree,compute.var=TRUE){
     PSRout<-cbind(PSVout[,1]*PSVout[,2],PSVout[,2])
     if(compute.var!=TRUE) {
       colnames(PSRout)<-c("PSR","SR")
+      rownames(PSRout)<-rownames(PSVout)
       return(data.frame(PSRout))
     } else {
       PSRout<-cbind(PSRout,PSVout[,3]*(PSVout[,2])^2)       
       colnames(PSRout)<-c("PSR","SR","vars")
+      rownames(PSRout)<-rownames(PSVout)
       return(data.frame(PSRout))
     }
   }
