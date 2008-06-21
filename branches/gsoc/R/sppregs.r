@@ -9,26 +9,25 @@ sppregs<-function(samp,env,tree=NULL,fam="binomial"){
   {
     nenvs<-1
     envnames<-names(env)
-    formu<-paste("y~",env.names[1]) #Make formula
+    if (is.null(envnames)){envnames<-"env"}
+    formu<-paste("y~",envnames) #Make formula
   } else {
     nenvs<-dim(env)[2]       # number of environmental variables
     envnames<-colnames(env)  # vecor of env names
 
-    formu<-paste("y~",env.names[1]) #Make formula
+    formu<-paste("y~",envnames[1]) #Make formula
     for (t in 2:nenvs)
     {
-      formu<-paste(formu,env.names[t],sep="+")
+      formu<-paste(formu,envnames[t],sep="+")
     }
   }
-
-
 
   #Fit either the logistic or the standard regressions
   spp.resids<-NULL
   spp.coef<-NULL
   spp.se<-NULL
   spp.fits<-NULL
-
+               
   if(fam=="gaussian")
   {
       for(i in 1:nspp)
@@ -48,7 +47,7 @@ sppregs<-function(samp,env,tree=NULL,fam="binomial"){
     for(i in 1:nspp)
     {
       y<-samp[,i]
-      mod<-brglm(formu,data=cbind(y,env))
+      mod<-brglm(formu,data=data.frame(cbind(y,env)))
       spp.resids<-cbind(spp.resids,mod$y-mod$fitted.values)
       spp.fits<-cbind(spp.fits,mod$fitted.values)
       spp.coef<-cbind(spp.coef,summary(mod)$coef[,1])
@@ -84,5 +83,34 @@ sppregs<-function(samp,env,tree=NULL,fam="binomial"){
   cors.pa<-cor(samp)[upper.tri(cor(samp))]
   names(cors.pa)<-pairnames
   names(cors.resid)<-pairnames
-  return(list(family=fam,residuals=spp.resids,coefficients=spp.coef,std.errors=spp.se,cors.pa=cors.pa,cors.resid=cors.resid))
+
+# If a tree is provided
+  if (is.null(tree))
+  {
+    return(list(family=fam,residuals=spp.resids,coefficients=spp.coef,std.errors=spp.se,cors.pa=cors.pa,cors.resid=cors.resid,cors.phylo=NULL))
+  } else {
+  
+  if(is(tree)[1]=="phylo")
+  {
+    tree<-prune.sample(samp,tree)
+    # Make a correlation matrix of the species pool phylogeny
+    Cmatrix<-vcv.phylo(tree,cor=TRUE)
+  } else {
+    Cmatrix<-tree
+    species<-colnames(samp)
+    Cmatrix<-Cmatrix[species,species]
+  }
+  
+  cors.phylo<-Cmatrix[upper.tri(Cmatrix)]
+  names(cors.phylo)<-pairnames
+  return(list(family=fam,residuals=spp.resids,coefficients=spp.coef,std.errors=spp.se,cors.pa=cors.pa,cors.resid=cors.resid,cors.phylo=cors.phylo))
+ 
+  }
 }
+
+samp<-mthood.abund[,4:12]
+env<-mthood.env[,1]
+fam="binomial"
+tree<-mthood.tree
+
+sppregs(samp,env,tree,fam)
