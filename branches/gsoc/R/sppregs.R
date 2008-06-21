@@ -107,10 +107,3 @@ sppregs<-function(samp,env,tree=NULL,fam="binomial"){
  
   }
 }
-
-samp<-mthood.abund[,4:12]
-env<-mthood.env[,1]
-fam="binomial"
-tree<-mthood.tree
-
-sppregs(samp,env,tree,fam)
