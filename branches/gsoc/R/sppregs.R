@@ -1,9 +1,30 @@
 sppregs<-function(samp,env,tree=NULL,fam="binomial"){
 
+  require(brglm)           #require the brglm library that fits logistic regression with Firth Correction
+  
+  if(is.null(tree))
+  {
+    cors.phylo=NULL
+  } else {                # If a tree is provided
+  
+    if(is(tree)[1]=="phylo")
+    {
+      tree<-prune.sample(samp,tree)
+      # Make a correlation matrix of the species pool phylogeny
+      Cmatrix<-vcv.phylo(tree,cor=TRUE)
+    } else {
+      Cmatrix<-tree
+      Cmatrix<-Cmatrix[sppnames,sppnames]
+    }
+  cors.phylo<-Cmatrix[lower.tri(Cmatrix)] #vector of pairwise phylogenetic correlations among species
+  samp<-samp[,colnames(Cmatrix)]          #only those species in the phylogeny are regressed
+  }
+  
   nplots<-dim(samp)[1]     # number of units in the occurence data
   nspp<-dim(samp)[2]       # number of species  in the occurence data
   sppnames<-colnames(samp) # vector of species names
 
+  #make formula for model fit to each species
 
   if(is.null(dim(env)))
   {
@@ -14,7 +35,6 @@ sppregs<-function(samp,env,tree=NULL,fam="binomial"){
   } else {
     nenvs<-dim(env)[2]       # number of environmental variables
     envnames<-colnames(env)  # vecor of env names
-
     formu<-paste("y~",envnames[1]) #Make formula
     for (t in 2:nenvs)
     {
@@ -23,10 +43,10 @@ sppregs<-function(samp,env,tree=NULL,fam="binomial"){
   }
 
   #Fit either the logistic or the standard regressions
-  spp.resids<-NULL
-  spp.coef<-NULL
-  spp.se<-NULL
-  spp.fits<-NULL
+  spp.resids<-NULL                           #holds each species residuals y-yhat
+  spp.coef<-NULL                             #holds the coefficients of each species 
+  spp.se<-NULL                               #holds the se of the coefs.
+  spp.fits<-NULL                             #holds the yhats
                
   if(fam=="gaussian")
   {
@@ -35,15 +55,14 @@ sppregs<-function(samp,env,tree=NULL,fam="binomial"){
         y<-samp[,i]
         mod<-glm(formu,data=cbind(y,env))
         spp.resids<-cbind(spp.resids,mod$y-mod$fitted.values)
-        spp.fits<-cbind(spp.fits,mod$fit)
+        spp.fits<-cbind(spp.fits,mod$fitted.values)
         spp.coef<-cbind(spp.coef,summary(mod)$coef[,1])
         spp.se<-cbind(spp.se,summary(mod)$coef[,2])
       }
-
-      cors.resid<-cor(spp.resids)[lower.tri(cor(spp.resids))]
+      cors.resid<-cor(spp.resids)[lower.tri(cor(spp.resids))]  #a vector of residual correlations among species
 
   } else {
-    samp[samp>0]<-1
+    samp[samp>0]<-1             #make samp a pa matrix
     for(i in 1:nspp)
     {
       y<-samp[,i]
@@ -52,8 +71,9 @@ sppregs<-function(samp,env,tree=NULL,fam="binomial"){
       spp.fits<-cbind(spp.fits,mod$fitted.values)
       spp.coef<-cbind(spp.coef,summary(mod)$coef[,1])
       spp.se<-cbind(spp.se,summary(mod)$coef[,2])
-
     }
+    
+    # calcualte the correlations among species residuals given that they come from a binomial process
     cor.r<-matrix(0,nrow=nspp,ncol=nspp)
     for (j in 1:dim(spp.resids)[1])
     {
@@ -63,49 +83,33 @@ sppregs<-function(samp,env,tree=NULL,fam="binomial"){
 		  r<-matrix(spp.resids[j,],nrow=1)
       cor.r=cor.r+((t(r)%*%r)*invv)
     }
-
     RC=cor.r/dim(spp.resids)[1]
-    cors.resid<-RC[upper.tri(RC)] # Observed correlations of residuals among species
+    cors.resid<-RC[lower.tri(RC)] # Observed correlations of residuals among species
   }
-
+  
+  #add names to output
   colnames(spp.coef)<-colnames(samp)
   colnames(spp.se)<-colnames(samp)
   colnames(spp.resids)<-colnames(samp)
   colnames(spp.fits)<-colnames(samp)
-  pairnames=NULL
+  pairnames=NULL  # make a vector of pairwise comparison names
   for (o in 1:(nspp-1))
   {
     for (u in (o+1):nspp)
     {
-    pairnames<-c(pairnames,paste(sppnames[o],sppnames[u],sep="-"))
+      pairnames<-c(pairnames,paste(sppnames[o],sppnames[u],sep="-"))
     }
   }
-  cors.pa<-cor(samp)[upper.tri(cor(samp))]
+  cors.pa<-cor(samp)[lower.tri(cor(samp))] #obs pa correlations
   names(cors.pa)<-pairnames
   names(cors.resid)<-pairnames
+  if(is.null(cors.phylo)==FALSE)
+  {
+    names(cors.phylo)<-pairnames
+  }
 
-# If a tree is provided
-  if (is.null(tree))
-  {
-    return(list(family=fam,residuals=spp.resids,coefficients=spp.coef,std.errors=spp.se,cors.pa=cors.pa,cors.resid=cors.resid,cors.phylo=NULL))
-  } else {
-  
-  if(is(tree)[1]=="phylo")
-  {
-    tree<-prune.sample(samp,tree)
-    # Make a correlation matrix of the species pool phylogeny
-    Cmatrix<-vcv.phylo(tree,cor=TRUE)
-  } else {
-    Cmatrix<-tree
-    species<-colnames(samp)
-    Cmatrix<-Cmatrix[species,species]
-  }
-  
-  cors.phylo<-Cmatrix[upper.tri(Cmatrix)]
-  names(cors.phylo)<-pairnames
   return(list(family=fam,residuals=spp.resids,coefficients=spp.coef,std.errors=spp.se,cors.pa=cors.pa,cors.resid=cors.resid,cors.phylo=cors.phylo))
- 
-  }
+
 }
 
 plot.sppregs<-function(sppreg,rows=c(1,3),cex.mag=1,x.label="phylogenetic correlations",y.label=c("occurrence correlations w/ env","occurrence correlations wo/ env","change in correlations")){
