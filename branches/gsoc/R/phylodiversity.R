@@ -256,6 +256,8 @@ pse<-function(samp,tree){
     flag=2
   }
 
+  samp<-as.matrix(samp)
+  
   if(is(tree)[1]=="phylo")
   {
     tree<-prune.sample(samp,tree) 
