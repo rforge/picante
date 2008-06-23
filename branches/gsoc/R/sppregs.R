@@ -108,7 +108,12 @@ sppregs<-function(samp,env,tree=NULL,fam="binomial"){
     names(cors.phylo)<-pairnames
   }
 
-  return(list(family=fam,residuals=spp.resids,coefficients=spp.coef,std.errors=spp.se,cors.pa=cors.pa,cors.resid=cors.resid,cors.phylo=cors.phylo))
+  correlations<-c(cor(cors.phylo,cors.pa,use="pairwise.complete.obs"),
+                  cor(cors.phylo,cors.resid,use="pairwise.complete.obs"),
+                  cor(cors.phylo,cors.resid-cors.pa,use="pairwise.complete.obs"))
+  names(correlations)<-c("occurence-phylo","residual-phylo","change-phylo")
+  return(list(family=fam,residuals=spp.resids,coefficients=spp.coef,std.errors=spp.se,correlations=correlations,
+              cors.pa=cors.pa,cors.resid=cors.resid,cors.phylo=cors.phylo))
 
 }
 
