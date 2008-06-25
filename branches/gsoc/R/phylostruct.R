@@ -1,4 +1,4 @@
-phylo.struct<-function(samp,tree,env=NULL,metric=c("psv","psr","pse","psc","sppregs"),null.model=c("frequency","richness","both"),runs=10,alpha=0.05,fam="binomial"){
+phylostruct<-function(samp,tree,env=NULL,metric=c("psv","psr","pse","psc","sppregs"),null.model=c("frequency","richness","both"),runs=10,alpha=0.05,fam="binomial"){
 
   metric<-match.arg(metric)
   null.model<-match.arg(null.model)
