@@ -10,14 +10,20 @@ sppregs<-function(samp,env,tree=NULL,fam="binomial"){
     if(is(tree)[1]=="phylo")
     {
       tree<-prune.sample(samp,tree)
+      # Make sure that the species line up
+      samp<-samp[,tree$tip.label]
       # Make a correlation matrix of the species pool phylogeny
       Cmatrix<-vcv.phylo(tree,cor=TRUE)
     } else {
       Cmatrix<-tree
-      Cmatrix<-Cmatrix[sppnames,sppnames]
+      species<-colnames(samp)
+      preval<-colSums(samp)/sum(samp)
+      species<-species[preval>0]
+      Cmatrix<-Cmatrix[species,species]
+      samp<-samp[,colnames(Cmatrix)]
     }
-  cors.phylo<-Cmatrix[lower.tri(Cmatrix)] #vector of pairwise phylogenetic correlations among species
-  samp<-samp[,colnames(Cmatrix)]          #only those species in the phylogeny are regressed
+    cors.phylo<-Cmatrix[lower.tri(Cmatrix)] #vector of pairwise phylogenetic correlations among species
+    samp<-samp[,colnames(Cmatrix)]          #only those species in the phylogeny are regressed
   }
   
   nplots<-dim(samp)[1]     # number of units in the occurence data
