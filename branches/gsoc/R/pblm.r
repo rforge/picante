@@ -1,4 +1,4 @@
-pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=FALSE){
+pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=FALSE,maxit=10000){
 
 
   # Make a vector of associations
@@ -141,8 +141,9 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
     V1<-as.matrix(V1)
     V2<-as.matrix(V2)
     
-    V1<-V1/det(V1)^(1/nspp1)   # model of coevolution
-  	V2<-V2/det(V2)^(1/nspp2)
+    
+    V1<-V1/det(V1)^(1/nspp1)   # scale covariance matrices (this reduces numerical problems caused by
+  	V2<-V2/det(V2)^(1/nspp2)   # determinants going to infinity or zero)
   	V<-kronecker(V2,V1)  
     invV<-qr.solve(V)
     
@@ -184,7 +185,7 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
       t(E)%*%invV%*%E/(nassocs-1)
     }
     # estimate d1 and d2 via Nelder-Mead method same as fminsearch in Matlab, by minimizing MSE
-    est<-optim(pstart,pegls,control=list(maxit=10000))        
+    est<-optim(pstart,pegls,control=list(maxit=maxit))        
     MSEFull<-est$value
   	d1<-abs(est$par[1])
   	d2<-abs(est$par[2])
