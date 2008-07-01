@@ -156,18 +156,19 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
   
   #calculate for the star (assuming no phylogenetic correlation)
 	astar<-solve((t(U)%*%U),(t(U)%*%A))
-	MSEStar<-cov(A)
-	s2aStar<-as.vector(MSEStar)*qr.solve((t(U)%*%U))
+	MSETotal<-cov(A)
+	s2aStar<-as.vector(MSETotal)*qr.solve((t(U)%*%U))
 	sdaStar<-t(diag(s2aStar)^(.5))
 	approxCFstar<-rbind(t(astar)-1.96%*%sdaStar, t(astar), t(astar)+1.96%*%sdaStar)
   Estar<-A-U%*%astar
+  MSEStar<-cov(matrix(Estar))
   
   if(is.null(tree1) | is.null(tree2))
   {
     coefficents<-approxCFstar
     rownames(coefficents)<-c("upper CI 95%","estimate","lower CI 95%")
     colnames(coefficents)<-paste("star",covnames,sep="-")
-    MSEs<-data.frame(MSEStar)
+    MSEs<-cbind(data.frame(MSETotal),data.frame(MSEStar))
     return(list(MSE=MSEs,signal.strength=NULL,coefficents=data.frame(coefficents),variates=data.frame(data.vecs),residuals=data.frame(Estar)))
   } else {
   
@@ -264,7 +265,7 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
     coefficents<-cbind(approxCFfull,approxCFstar,approxCFbase)
     rownames(coefficents)<-c("upper CI 95%","estimate","lower CI 95%")
     colnames(coefficents)<-c(paste("full",c("intercept",colnames(U)[-1]),sep="-"),paste("star",c("intercept",colnames(U)[-1]),sep="-"),paste("base",c("intercept",colnames(U)[-1]),sep="-"))
-    MSEs<-cbind(MSEFull, data.frame(MSEStar), data.frame(MSEbase))
+    MSEs<-cbind(data.frame(MSETotal),data.frame(MSEFull), data.frame(MSEStar), data.frame(MSEbase))
     residuals<-cbind(data.frame(Efull),data.frame(Estar),data.frame(Ebase))
     rownames(residuals)<-pairnames
   
