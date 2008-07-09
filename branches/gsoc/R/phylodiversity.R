@@ -400,7 +400,7 @@ psv.spp<-function(samp,tree){
   Cmatrix<-Cmatrix[indexcov,indexcov]
   samp<-samp[,indexcov]
 
-  obs.PSV<-mean(psv(samp,Cmatrix,compute.var=FALSE)[,1])
+  obs.PSV<-mean(psv(samp,Cmatrix,compute.var=FALSE)[,1],na.rm=TRUE)
 
   # numbers of locations and species
   nlocations<-dim(samp)[1]
@@ -411,7 +411,7 @@ psv.spp<-function(samp,tree){
   {
     spp.samp<-samp[,-j]
     spp.Cmatrix<-Cmatrix[-j,-j]
-    spp.PSV<-mean(psv(spp.samp,spp.Cmatrix,compute.var=FALSE)[,1])
+    spp.PSV<-mean(psv(spp.samp,spp.Cmatrix,compute.var=FALSE)[,1],na.rm=TRUE)
     spp.PSVs<-c(spp.PSVs,spp.PSV)
   }
   spp.PSVout<-(spp.PSVs-obs.PSV)/sum(abs(spp.PSVs-obs.PSV))
