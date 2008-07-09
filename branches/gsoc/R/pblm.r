@@ -1,4 +1,4 @@
-pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=FALSE,maxit=10000){
+pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=FALSE,nreps=10,maxit=10000,pstart=c(.5,.5)){
 
 
   # Make a vector of associations
@@ -165,11 +165,11 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
   
   if(is.null(tree1) | is.null(tree2))
   {
-    coefficents<-approxCFstar
-    rownames(coefficents)<-c("upper CI 95%","estimate","lower CI 95%")
-    colnames(coefficents)<-paste("star",covnames,sep="-")
+    coefs<-approxCFstar
+    rownames(coefs)<-c("upper CI 95%","estimate","lower CI 95%")
+    colnames(coefs)<-paste("star",c("intercept",colnames(U)[-1]),sep="-")
     MSEs<-cbind(data.frame(MSETotal),data.frame(MSEStar))
-    return(list(MSE=MSEs,signal.strength=NULL,coefficents=data.frame(coefficents),variates=data.frame(data.vecs),residuals=data.frame(Estar)))
+    return(list(MSE=MSEs,signal.strength=NULL,coefficients=data.frame(t(coefs)),CI.boot=NULL,variates=data.frame(data.vecs),residuals=data.frame(Estar),bootvalues=NULL))
   } else {
   
     #tree1 is the phylogeny for the rows
@@ -194,7 +194,6 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
       V2<-tree2[colnames(assocs),colnames(assocs)]
     }
   
-    
     #Calculate Regression Coefficents for the base (assuming strict brownian motion evolution, ds=1)
     V1<-as.matrix(V1)
     V2<-as.matrix(V2)
@@ -221,7 +220,7 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
   	# tau = tau_i + tau_j where tau_i equals the node to tip distance
   	tau1<-matrix(diag(initV1),nspp1,nspp1) + matrix(diag(initV1),nspp1,nspp1)-2*initV1
   	tau2<-matrix(diag(initV2),nspp2,nspp2) + matrix(diag(initV2),nspp2,nspp2)-2*initV2
-    pstart<-c(.1,.1)
+    
     
     # The work horse function to estimate ds
     pegls<-function(parameters)
@@ -247,24 +246,27 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
     MSEFull<-est$value
   	d1<-abs(est$par[1])
   	d2<-abs(est$par[2])
-    # Calculate
+  	
+    # Calculate EGLS coef w estimated ds 
   	V1<-(d1^tau1)*(1-d1^(2*initV1))/(1-d1^2)
     V2<-(d2^tau2)*(1-d2^(2*initV2))/(1-d2^2)
     V1<-V1/det(V1)^(1/nspp1)   # model of coevolution
     V2<-V2/det(V2)^(1/nspp2)
     V<-kronecker(V2,V1)  
     invV<-qr.solve(V)
-    a<-solve((t(U)%*%invV%*%U),((t(U)%*%invV%*%A)))   #NOTE: Ives in his Matlab code uses a Left matrix division symbol (\)
-    s2a<-as.vector(MSE)*qr.solve(t(U)%*%invV%*%U)
-  	sda<-t(diag(s2a)^(.5))
-  	approxCFfull<-rbind(t(a)-1.96%*%sda, t(a), t(a)+1.96%*%sda)
-    Efull<-A-U%*%a
+    aFull<-solve((t(U)%*%invV%*%U),((t(U)%*%invV%*%A)))   #NOTE: Ives in his Matlab code uses a Left matrix division symbol (\)
+    s2aFull<-as.vector(MSEFull)*qr.solve(t(U)%*%invV%*%U)
+  	sdaFull<-t(diag(s2aFull)^(.5))
+  	approxCFfull<-rbind(t(aFull)-1.96%*%sdaFull, t(aFull), t(aFull)+1.96%*%sdaFull)
+    Efull<-A-U%*%aFull
     ########################################
     
     #organize output
-    coefficents<-cbind(approxCFfull,approxCFstar,approxCFbase)
-    rownames(coefficents)<-c("upper CI 95%","estimate","lower CI 95%")
-    colnames(coefficents)<-c(paste("full",c("intercept",colnames(U)[-1]),sep="-"),paste("star",c("intercept",colnames(U)[-1]),sep="-"),paste("base",c("intercept",colnames(U)[-1]),sep="-"))
+    coefs<-cbind(approxCFfull,approxCFstar,approxCFbase)
+    rownames(coefs)<-c("approx upper CI 95%","estimate","approx lower CI 95%")
+    colnames(coefs)<-c(paste("full",c("intercept",colnames(U)[-1]),sep="-"),paste("star",c("intercept",colnames(U)[-1]),sep="-"),paste("base",c("intercept",colnames(U)[-1]),sep="-"))
+    coefs<-t(coefs)
+    CI.boot<-NULL
     MSEs<-cbind(data.frame(MSETotal),data.frame(MSEFull), data.frame(MSEStar), data.frame(MSEbase))
     residuals<-cbind(data.frame(Efull),data.frame(Estar),data.frame(Ebase))
     rownames(residuals)<-pairnames
@@ -273,10 +275,77 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
     
     if(bootstrap)
     {
-    return(NULL)
-    } else {
-    return(list(MSE=MSEs,signal.strength=data.frame(cbind(d1,d2)),coefficents=data.frame(coefficents),variates=data.frame(data.vecs),residuals=residuals))
-    }
-  }
+      Vtrue<-V
+		  Atrue<-A
+		  atrue<-aFull
+		  dtrue<-c(d1,d2)
+		  ehold<-eigen(Vtrue,symmetric=TRUE)
+      L<-ehold$vectors[,nassocs:1]    #A or L
+      G<-sort(ehold$values)      #D
+      iG<-diag(G^-.5)    #iD
 
-}
+      # Construct Y = TT*A so that 
+			# E{(Y-b)*(Y-b)'} = E{(TT*A-b)*(TT*A-b)'}
+			#				  = T*V*T'
+			#				  = I
+
+      TT<-iG%*%t(L)
+		  Y<-TT%*%Atrue
+		  Z<-TT%*%U
+
+		  res<-(Y-Z%*%atrue)	# residuals in orthogonalized space
+		  invT<-qr.solve(TT)
+			
+      bootlist=NULL
+      for (i in 1:nreps)
+      {
+        randindex<-sample(1:nassocs,replace=TRUE)	# vector of random indices
+        #randindex=1:nassocs					# retain order
+        YY<-Z%*%atrue+res[randindex]	# create new values of Y with random residuals
+        A<-invT%*%YY	# back-transformed data
+        pstart<-dtrue+c(0,.1)
+        estRand<-optim(pstart,pegls,control=list(maxit=maxit))
+        MSEFullrand<-estRand$value
+        d1rand<-abs(estRand$par[1])
+  	    d2rand<-abs(estRand$par[2])
+  	
+        # Calculate EGLS coef w estimated ds 
+        V1<-(d1rand^tau1)*(1-d1rand^(2*initV1))/(1-d1rand^2)
+        V2<-(d2rand^tau2)*(1-d2rand^(2*initV2))/(1-d2rand^2)
+        V1<-V1/det(V1)^(1/nspp1)   # model of coevolution
+        V2<-V2/det(V2)^(1/nspp2)
+        V<-kronecker(V2,V1)  
+        invV<-qr.solve(V)
+        arand<-solve((t(U)%*%invV%*%U),((t(U)%*%invV%*%A)))   #NOTE: Ives in his Matlab code uses a Left matrix division symbol (\)
+        
+        bootlist<-rbind(bootlist,c(d1rand, d2rand, t(arand)))
+      }
+      nr<-dim(bootlist)[1]
+      nc<-dim(bootlist)[2]
+      alpha<-0.05
+      conf<-NULL
+      for(j in 1:nc)
+      {
+        bootconf<-quantile(bootlist[,j],probs = c(alpha/2, 1-alpha/2))
+        conf<-rbind(conf,c(bootconf[1],bootconf[2]))
+      }
+      signal.strength<-data.frame(cbind(conf[1:2,1],dtrue,conf[1:2,2]))
+      rownames(signal.strength)<-c("d1","d2")
+      colnames(signal.strength)<-c("booted lower CI 95%","estimate","booted upper CI 95%")
+
+      CI.boot<-conf
+      rownames(CI.boot)<-c("d1","d2","intercept",colnames(U)[-1])
+      colnames(CI.boot)<-c("booted lower CI 95%","booted upper CI 95%")
+      colnames(bootlist)<-c("d1","d2","intercept",colnames(U)[-1])
+      return(list(MSE=MSEs,signal.strength=signal.strength,coefficients=data.frame(coefs),CI.boot=CI.boot,variates=data.frame(data.vecs),residuals=residuals,bootvalues=bootlist))
+    
+    } else {
+    conf<-matrix(NA,2,2)
+    signal.strength<-data.frame(cbind(conf[1,],dtrue,conf[2,]))
+    rownames(signal.strength)<-c("d1","d2")
+    colnames(signal.strength)<-c("booted lower CI 95%","estimate","booted upper CI 95%")
+    return(list(MSE=MSEs,signal.strength=signal.strength,coefficients=data.frame(coefs),CI.boot=NULL,variates=data.frame(data.vecs),residuals=residuals,bootvalues=NULL))
+    }
+  }                                                                                                       
+
+}                                                                                       
