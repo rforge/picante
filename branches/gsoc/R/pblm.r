@@ -1,6 +1,5 @@
 pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=FALSE,nreps=10,maxit=10000,pstart=c(.5,.5)){
 
-
   # Make a vector of associations
   A<-as.matrix(as.vector(as.matrix(assocs)))
   data.vecs<-A
@@ -21,12 +20,9 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
       pairnames<-c(pairnames,paste(sppnames2[o],sppnames1[u],sep="-"))
     }
   }
-  
-  
-  
+    
   #Clean Covariates
   #If the covariate applies to both sets, then it should be in the matrix of the longer set 
-  
   covnames<-NULL
   C1covs<-NULL
   if(is.null(covars1))
@@ -73,7 +69,6 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
   }
 
 
- 
   C2covs<-NULL
   if(is.null(covars2))
   {
@@ -119,7 +114,7 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
   }
   
   
-# Make U  
+# Make U, the combined matrix of covariates 
   U<-NULL
   if(is.null(C1) & is.null(C2))
   {
@@ -142,7 +137,6 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
   }
 
   # Begin to organize output
-  
   if(is.null(dim(U)))
   {
     data.vecs<-data.frame(A)
@@ -152,8 +146,8 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
   }
   rownames(data.vecs)<-pairnames
   
+  ######
   # Calculate Star Regression Coefficients
-  
   #calculate for the star (assuming no phylogenetic correlation)
 	astar<-solve((t(U)%*%U),(t(U)%*%A))
 	MSETotal<-cov(A)
@@ -162,11 +156,12 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
 	approxCFstar<-rbind(t(astar)-1.96%*%sdaStar, t(astar), t(astar)+1.96%*%sdaStar)
   Estar<-A-U%*%astar
   MSEStar<-cov(matrix(Estar))
+  #######
   
   if(is.null(tree1) | is.null(tree2))
   {
     coefs<-approxCFstar
-    rownames(coefs)<-c("upper CI 95%","estimate","lower CI 95%")
+    rownames(coefs)<-c("lower CI 95%","estimate","upper CI 95%")
     colnames(coefs)<-paste("star",c("intercept",colnames(U)[-1]),sep="-")
     MSEs<-cbind(data.frame(MSETotal),data.frame(MSEStar))
     return(list(MSE=MSEs,signal.strength=NULL,coefficients=data.frame(t(coefs)),CI.boot=NULL,variates=data.frame(data.vecs),residuals=data.frame(Estar),bootvalues=NULL))
@@ -205,8 +200,8 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
     invV<-qr.solve(V)
     
     abase<-solve((t(U)%*%invV%*%U),((t(U)%*%invV%*%A)))   #NOTE: Ives in his Matlab code uses a Left matrix division symbol (\)
-    MSEbase<-(t(A-U%*%abase)%*%invV%*%(A-U%*%abase))/(nassocs-1)  
-    s2abase<-as.vector(MSEbase)*qr.solve(t(U)%*%invV%*%U)
+    MSEBase<-(t(A-U%*%abase)%*%invV%*%(A-U%*%abase))/(nassocs-1)  
+    s2abase<-as.vector(MSEBase)*qr.solve(t(U)%*%invV%*%U)
   	sdabase<-t(diag(s2abase)^(.5))
     approxCFbase<-rbind(t(abase)-1.96%*%sdabase, t(abase), t(abase)+1.96%*%sdabase)
     Ebase<-A-U%*%abase
@@ -221,8 +216,7 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
   	tau1<-matrix(diag(initV1),nspp1,nspp1) + matrix(diag(initV1),nspp1,nspp1)-2*initV1
   	tau2<-matrix(diag(initV2),nspp2,nspp2) + matrix(diag(initV2),nspp2,nspp2)-2*initV2
     
-    
-    # The work horse function to estimate ds
+    # The workhorse function to estimate ds
     pegls<-function(parameters)
     {
       d1<-abs(parameters[1])
@@ -263,11 +257,11 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
     
     #organize output
     coefs<-cbind(approxCFfull,approxCFstar,approxCFbase)
-    rownames(coefs)<-c("approx upper CI 95%","estimate","approx lower CI 95%")
+    rownames(coefs)<-c("approx lower CI 95%","estimate","approx upper CI 95%")
     colnames(coefs)<-c(paste("full",c("intercept",colnames(U)[-1]),sep="-"),paste("star",c("intercept",colnames(U)[-1]),sep="-"),paste("base",c("intercept",colnames(U)[-1]),sep="-"))
     coefs<-t(coefs)
     CI.boot<-NULL
-    MSEs<-cbind(data.frame(MSETotal),data.frame(MSEFull), data.frame(MSEStar), data.frame(MSEbase))
+    MSEs<-cbind(data.frame(MSETotal),data.frame(MSEFull), data.frame(MSEStar), data.frame(MSEBase))
     residuals<-cbind(data.frame(Efull),data.frame(Estar),data.frame(Ebase))
     rownames(residuals)<-pairnames
   
@@ -322,7 +316,9 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
       }
       nr<-dim(bootlist)[1]
       nc<-dim(bootlist)[2]
-      alpha<-0.05
+      
+      #Calculate bootstrapped CIs
+      alpha<-0.05  # alpha is always 0.05, but could change here
       conf<-NULL
       for(j in 1:nc)
       {
@@ -333,6 +329,7 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
       rownames(signal.strength)<-c("d1","d2")
       colnames(signal.strength)<-c("booted lower CI 95%","estimate","booted upper CI 95%")
 
+      #organize output
       CI.boot<-conf
       rownames(CI.boot)<-c("d1","d2","intercept",colnames(U)[-1])
       colnames(CI.boot)<-c("booted lower CI 95%","booted upper CI 95%")
@@ -340,6 +337,9 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
       return(list(MSE=MSEs,signal.strength=signal.strength,coefficients=data.frame(coefs),CI.boot=CI.boot,variates=data.frame(data.vecs),residuals=residuals,bootvalues=bootlist))
     
     } else {
+    ########
+    # If bootstrapping not performed
+    
     conf<-matrix(NA,2,2)
     signal.strength<-data.frame(cbind(conf[1,],dtrue,conf[2,]))
     rownames(signal.strength)<-c("d1","d2")
@@ -347,5 +347,4 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
     return(list(MSE=MSEs,signal.strength=signal.strength,coefficients=data.frame(coefs),CI.boot=NULL,variates=data.frame(data.vecs),residuals=residuals,bootvalues=NULL))
     }
   }                                                                                                       
-
-}                                                                                       
+}
