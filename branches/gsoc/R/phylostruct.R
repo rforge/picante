@@ -22,7 +22,7 @@ phylostruct<-function(samp,tree,env=NULL,metric=c("psv","psr","pse","psc","sppre
                        psc = replicate(runs,mean(psc(randomizeSample(samp,null.model=null.model),tree)[,1])))
     quantiles.null<-quantile(nulls,probs=c(alpha/2,1-(alpha/2)))
     mean.null<-mean(nulls)
-    obs<-switch(metric,
+    mean.obs<-switch(metric,
                        psv = mean(psv(samp,tree,compute.var=FALSE)[,1]),
                        psr = mean(psr(samp,tree,compute.var=FALSE)[,1]),
                        pse = mean(pse(samp,tree)[,1]),
@@ -34,7 +34,7 @@ phylostruct<-function(samp,tree,env=NULL,metric=c("psv","psr","pse","psc","sppre
     phylo.structure="overdispersed"} else {phylo.structure="random"}
     }
     
-    return(list(metric=metric,null.model=null.model,runs=runs,obs=obs,mean.null=mean.null
-                ,quantiles.null=quantiles.null,phylo.structure=phylo.structure,null.means=null.means))
+    return(list(metric=metric,null.model=null.model,runs=runs,mean.obs=mean.obs,mean.null=mean.null
+                ,quantiles.null=quantiles.null,phylo.structure=phylo.structure,null.means=nulls))
   }
 }
