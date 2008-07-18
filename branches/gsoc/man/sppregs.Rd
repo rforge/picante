@@ -1,13 +1,13 @@
 \name{sppregs}
 \alias{sppregs}
-\alias{plot.sppregs}
+\alias{sppregs.plot}
 \title{ Regressions to Separate Phylogenetic Attraction and Repulsion }
 \description{
   Fit regressions on species abundance or presence/absence across communities and calculate phylogenetic correlations
 }
 \usage{
-sppregs(samp, env, tree=NULL, fam="binomial")
-plot.sppregs(sppreg, rows=c(1,3), cex.mag=1, x.label="phylogenetic correlations", 
+sppregs(samp, env, tree=NULL, fam="gaussian")
+sppregs.plot(sppreg, rows=c(1,3), cex.mag=1, x.label="phylogenetic correlations", 
 y.label=c("occurrence correlations w/ env","occurrence correlations wo/ env","change in correlations"))
 }
 
@@ -15,7 +15,7 @@ y.label=c("occurrence correlations w/ env","occurrence correlations wo/ env","ch
   \item{samp}{ community data matrix, species as columns, communities as rows }
   \item{env}{ environmental data matrix }
   \item{tree}{  phylo tree object or a phylogenetic covariance matrix }
-  \item{fam}{ with \code{fam = "binomial"} fit logistic regressions with Firth's bias-reduction; also accepts \code{fam = "gaussian"} }
+  \item{fam}{ with \code{fam = "gaussian"} fits with \code{\link[stats]{glm}}; with \code{fam = "binomial"} fit logistic regressions with Firth's bias-reduction using \code{\link[brglm]{brglm}}  }
   \item{sppreg}{ object from function \code{\link[picante]{sppregs}} }
   \item{rows}{ \code{rows = c(1,3)} plots in a row; \code{rows = c(3,1)} in a column }
   \item{cex.mag}{ value for \code{cex} in \code{par} }
@@ -31,12 +31,12 @@ y.label=c("occurrence correlations w/ env","occurrence correlations wo/ env","ch
           the function \code{\link{phylosignal}}. 
           \cr
           \cr
-          The function \code{plot.sppregs} produces a set of three plots of the correlations of pairwise species phylogenetic correlations versus: 
+          The function \code{sppregs.plot} produces a set of three plots of the correlations of pairwise species phylogenetic correlations versus: 
           the observed pairwise correlations of species across communities, the residual correlations, and the pairwise differences between (i.e., the 
           change in species co-occurrence once the environmental variables are taken into account). The significance of these correlations can be tested
           via permutation with the function \code{\link{phylostruct}}.
 }
-\note{The function requires the library \code{brglm}}
+\note{The function requires the library \code{\link[brglm]{brglm}} to perform logistic regressions}
           
 \value{
 \item{family}{ the regression error distribution }
