@@ -1,6 +1,4 @@
 sppregs<-function(samp,env,tree=NULL,fam="gaussian"){
-
-  #require(brglm)           #require the brglm library that fits logistic regression with Firth Correction
   
   if(is.null(tree))
   {
@@ -68,6 +66,11 @@ sppregs<-function(samp,env,tree=NULL,fam="gaussian"){
       cors.resid<-cor(spp.resids)[lower.tri(cor(spp.resids))]  #a vector of residual correlations among species
 
   } else {
+  
+    if (!require(brglm)) {
+        stop("The 'brglm' package is required to use this function with argument fam=binomial.")
+    }
+
     samp[samp>0]<-1             #make samp a pa matrix
     for(i in 1:nspp)
     {
