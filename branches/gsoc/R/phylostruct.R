@@ -16,10 +16,10 @@ phylostruct<-function(samp,tree,env=NULL,metric=c("psv","psr","pse","psc","sppre
   } else {
 
     nulls<-switch(metric,
-                       psv = replicate(runs,mean(psv(randomizeSample(samp,null.model=null.model),tree,compute.var=FALSE)[,1])),
-                       psr = replicate(runs,mean(psr(randomizeSample(samp,null.model=null.model),tree,compute.var=FALSE)[,1])),
-                       pse = replicate(runs,mean(pse(randomizeSample(samp,null.model=null.model),tree)[,1])),
-                       psc = replicate(runs,mean(psc(randomizeSample(samp,null.model=null.model),tree)[,1])))
+                       psv = replicate(runs,mean(psv(as.matrix(randomizeSample(samp,null.model=null.model)),tree,compute.var=FALSE)[,1])),
+                       psr = replicate(runs,mean(psr(as.matrix(randomizeSample(samp,null.model=null.model)),tree,compute.var=FALSE)[,1])),
+                       pse = replicate(runs,mean(pse(as.matrix(randomizeSample(samp,null.model=null.model)),tree)[,1])),
+                       psc = replicate(runs,mean(psc(as.matrix(randomizeSample(samp,null.model=null.model)),tree)[,1])))
     quantiles.null<-quantile(nulls,probs=c(alpha/2,1-(alpha/2)))
     mean.null<-mean(nulls)
     mean.obs<-switch(metric,
