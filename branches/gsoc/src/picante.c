@@ -15,9 +15,9 @@ double **vectomat(double *v,int row,int column) {
   int i,j;
   double **m;
 
-  m = (double **)R_alloc(row,sizeof(int *));
+  m = (double **)R_alloc(row,sizeof(double *));
   for (i=0; i<row; i++) {
-    m[i] = (double *)R_alloc(column,sizeof(int));
+    m[i] = (double *)R_alloc(column,sizeof(double));
     for (j=0; j<column; j++) {
       m[i][j] = v[row*j+i];  /* R uses column-first ordering */
     }
