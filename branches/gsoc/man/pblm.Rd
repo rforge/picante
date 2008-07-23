@@ -57,6 +57,5 @@ Blomberg S.P., Garland T.J. & Ives A.R. (2003) Testing for phylogenetic signal i
 }
 
 \author{ Matthew Helmus \email{mrhelmus@gmail.com} }
-\seealso{ the K metric, \code{\link{Kcalc}}, uses the same Ornstein-Uhlenbeck model of evolution }
 
 \keyword{univar}
