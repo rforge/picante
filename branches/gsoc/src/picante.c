@@ -60,12 +60,14 @@ void trialswap(double *v, int *pintervals, int * prow, int * pcolumn) {
       while((l=intrand(column))==k);
       if((m[i][k]>0.0 && m[j][l]>0.0 && m[i][l]+m[j][k]==0.0)||(m[i][k]+m[j][l]==0.0 && m[i][l]>0.0 && m[j][k]>0.0))
 		{
+			//currently swaps abundances within columns (=species)
+			//should have a switch to swap abundances within rows, columns, or random
 		  tmp = m[i][k];
-		  m[i][k] = m[j][l];
+		  m[i][k] = m[j][k];
+		  m[j][k] = tmp;
+		  tmp = m[i][l];
+		  m[i][l] = m[j][l];
 		  m[j][l] = tmp;
-		  tmp = m[j][k];
-		  m[j][k] = m[i][l];
-		  m[i][l] = tmp;
 		}
     }
   mattovec(v,m,row,column);
