@@ -42,6 +42,7 @@ void trialswap(double *v, int *pintervals, int * prow, int * pcolumn) {
   int i,j,k,l;
   int row, column;
   int intervals;
+	double tmp;
   double **m;
 
   row = *prow;
@@ -57,13 +58,15 @@ void trialswap(double *v, int *pintervals, int * prow, int * pcolumn) {
       while((j=intrand(row))==i);
       k=intrand(column);
       while((l=intrand(column))==k);
-      if((m[i][k]*m[j][l]==1 && m[i][l]+m[j][k]==0)||(m[i][k]+m[j][l]==0 && m[i][l]*m[j][k]==1))
-	{
-	  m[i][k]=1-m[i][k];
-	  m[i][l]=1-m[i][l];
-	  m[j][k]=1-m[j][k];
-	  m[j][l]=1-m[j][l];
-	}
+      if((m[i][k]>0.0 && m[j][l]>0.0 && m[i][l]+m[j][k]==0.0)||(m[i][k]+m[j][l]==0.0 && m[i][l]>0.0 && m[j][k]>0.0))
+		{
+		  tmp = m[i][k];
+		  m[i][k] = m[j][l];
+		  m[j][l] = tmp;
+		  tmp = m[j][k];
+		  m[j][k] = m[i][l];
+		  m[i][l] = tmp;
+		}
     }
   mattovec(v,m,row,column);
   PutRNGstate();

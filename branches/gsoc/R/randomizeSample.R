@@ -14,10 +14,11 @@ function(samp, null.model=c("frequency","richness","both"),it=100) {
 	    return(t(data.frame(apply(samp,1,sample),row.names=colnames(samp))))
 	}
 	if (identical(null.model,"both")) 
-  {
-    ret1<-.C("trialswap",m=as.integer(samp),as.integer(it),as.integer(nrow(samp)),as.integer(ncol(samp)),PACKAGE="picante")
-    return(matrix(ret1$m,nrow=nrow(samp)))        
-        
+    {
+    ret1 <- .C("trialswap", m=as.numeric(samp), as.integer(it), as.integer(nrow(samp)), as.integer(ncol(samp)), PACKAGE="picante")
+    return(matrix(ret1$m,nrow=nrow(samp)))
+	}
+	
 #  #check for presence-absence and warn until abundance implemented
 #        x <- decostand(samp, "pa")
 #        if (!identical(x,samp)) stop("Null model currently requires a presence-absence matrix.")
@@ -45,6 +46,6 @@ function(samp, null.model=c("frequency","richness","both"),it=100) {
 #            mergedFrame[is.na(mergedFrame)] <- 0
 #            return(mergedFrame[rownames(x),colnames(x)])
 #        }
-	}
+
 }
 
