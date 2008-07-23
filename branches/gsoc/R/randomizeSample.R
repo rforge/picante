@@ -3,7 +3,7 @@
 } 
 
 `randomizeSample` <-
-function(samp, null.model=c("frequency","richness","both"),it=100) {
+function(samp, null.model=c("frequency","richness","both"),it=10000) {
 	samp<-as.matrix(samp)
   
   null.model <- match.arg(null.model)
@@ -15,10 +15,10 @@ function(samp, null.model=c("frequency","richness","both"),it=100) {
 	}
 	if (identical(null.model,"both")) 
     {
-    ret1 <- .C("trialswap", m=as.numeric(samp), as.integer(it), as.integer(nrow(samp)), as.integer(ncol(samp)), PACKAGE="picante")
-    return(matrix(ret1$m,nrow=nrow(samp)))
+        ret1 <- .C("trialswap", m=as.numeric(samp), as.integer(it), as.integer(nrow(samp)), as.integer(ncol(samp)), PACKAGE="picante")
+        return(matrix(ret1$m,nrow=nrow(samp),dimnames=list(rownames(samp),colnames(samp))))
 	}
-	
+
 #  #check for presence-absence and warn until abundance implemented
 #        x <- decostand(samp, "pa")
 #        if (!identical(x,samp)) stop("Null model currently requires a presence-absence matrix.")
