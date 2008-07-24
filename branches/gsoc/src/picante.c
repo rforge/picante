@@ -76,3 +76,30 @@ void trialswap(double *v, int *pintervals, int * prow, int * pcolumn) /*SKQ: why
     mattovec(v,m,row,column);
     PutRNGstate();
 }
+
+void richness(double *v, int * prow, int * pcolumn){
+    int i, j, k;
+    int row, column;
+    double **m;
+
+    row = *prow;
+    column = *pcolumn;
+
+    double randm[row][column];/*make an object to hold the random matrix*/
+
+    m = vectomat(v,row,column);
+
+    GetRNGstate();
+    for(i=1;i<row;i++){ /*for each row*/
+        /*Here I would do randperm in Matlab or sample in R*/
+        for(j=1;j<row;j++){/*Perhaps we need to do it elementwise across columns*/
+            k=intrand(column);
+            randm[i][k]
+
+            }
+
+        }
+
+    mattovec(v,m,row,column);
+    PutRNGstate();
+}
