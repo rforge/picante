@@ -5,23 +5,27 @@
 #include <Rmath.h>
 /*libraries to include*/
 
-/*SKQ: This takes an integer n and returns one random integer?*/
-int intrand(int n) {
+/*This takes an integer n and returns one random integer*/
+int intrand(int n)
+{
     double u;
     u = unif_rand();
-    return((int)(u*n));/*SKQ: I do not follow this line*/
+    return((int)(u*n));/*Cast the double as an integer*/
 }
 
 /* inefficient but probably not important;
  * allocate and copy in vector to matrix */
-double **vectomat(double *v,int row,int column) /*SKQ: I need a refresher on pointers.*/{
+double **vectomat(double *v,int row,int column)
+{
     int i,j;
     double **m;
 
     m = (double **)R_alloc(row,sizeof(double *));
-    for (i=0; i<row; i++) /*SKQ: does i++ mean i+1? Doe the for loop go to row or only to less than row?*/{
-        m[i] = (double *)R_alloc(column,sizeof(double));/*SKQ: I do not follow this line*/
-        for (j=0; j<column; j++) {
+    for (i=0; i<row; i++)
+    {
+        m[i] = (double *)R_alloc(column,sizeof(double));
+        for (j=0; j<column; j++)
+        {
             m[i][j] = v[row*j+i];  /* R uses column-first ordering */
         }
     }
@@ -29,38 +33,42 @@ double **vectomat(double *v,int row,int column) /*SKQ: I need a refresher on poi
 }
 
 /* copy matrix back into vector */
-void mattovec(double *v,double **m,int row,int column) {
+void mattovec(double *v,double **m,int row,int column)
+{
     int i,j,k;
     k=0;
-    for (j=0; j<column; j++) {
-        for (i=0; i<row; i++) {
+    for (j=0; j<column; j++)
+    {
+        for (i=0; i<row; i++)
+        {
             v[k++] = m[i][j];
         }
     }
 }
 
 
-void trialswap(double *v, int *pintervals, int * prow, int * pcolumn) /*SKQ: why are there spaces?*/{
+void trialswap(double *v, int *pintervals, int *prow, int *pcolumn)
+{
     long int trial;
-    int i,j,k,l;/*SKQ: I assume it is ok to have all the ints on one line?*/
+    int i,j,k,l;
     int row, column;
     int intervals;
 	double tmp;
-    double **m;/*SKQ: are the two stars because m is a 2D matrix?*/
+    double **m;
 
     row = *prow;
     column = *pcolumn;
     intervals = *pintervals;
 
-    m = vectomat(v,row,column);/*SKQ: Is v passed to trialswap as a matrix or vector?*/
+    m = vectomat(v,row,column);
 
     GetRNGstate();
     for(trial=0;trial<intervals;trial++)
     {
-        i=intrand(row);/*Choose a random row*/
-        while((j=intrand(row))==i);/*SKQ: It is ok not to have brackets? make sure that you do not randomly choose the same row as before*/
-        k=intrand(column);/*Choose a random column*/
-        while((l=intrand(column))==k);/*make sure that you do not randomly choose the same column as before*/
+        i=intrand(row);//Choose a random row
+        while((j=intrand(row))==i);//make sure that you do not randomly choose the same row as before
+        k=intrand(column);//Choose a random column
+        while((l=intrand(column))==k);//make sure that you do not randomly choose the same column as before
         if((m[i][k]>0.0 && m[j][l]>0.0 && m[i][l]+m[j][k]==0.0)||(m[i][k]+m[j][l]==0.0 && m[i][l]>0.0 && m[j][k]>0.0))
 		{
 			//currently swaps abundances within columns (=species)
@@ -77,29 +85,71 @@ void trialswap(double *v, int *pintervals, int * prow, int * pcolumn) /*SKQ: why
     PutRNGstate();
 }
 
-void richness(double *v, int * prow, int * pcolumn){
-    int i, j, k;
+void richnessindex(double *v, int *prow, int *pcolumn)
+{
+    int i, j, k, q, p, b, sum=0, we;
     int row, column;
-    double **m;
-
+    double **m, **randm;
     row = *prow;
     column = *pcolumn;
+    q = column;
+    double *randrow[column];
 
-    double randm[row][column];/*make an object to hold the random matrix*/
+    m = vectomat(v,row,column);//Change the vector v passed from R back to a Matrix
 
-    m = vectomat(v,row,column);
+    /*make list of ONES THE LENGTH OF THE COLUMNS*/
+    int s[column];
+    int t;
+    for (t=0;t<column;t++)
+    {
+        s[t]=1;
+    }
+    //////////////////////////////////
 
-    GetRNGstate();
-    for(i=1;i<row;i++){ /*for each row*/
-        /*Here I would do randperm in Matlab or sample in R*/
-        for(j=1;j<row;j++){/*Perhaps we need to do it elementwise across columns*/
-            k=intrand(column);
-            randm[i][k]
+    randm = (double **)R_alloc(row,sizeof(double *)); //Initiate the Random Matrix
+    //randrow = (double *)R_alloc(column,sizeof(double)); //Initiate a vector to hold the community that is being randomized
 
-            }
+    /*Begin looping to create random matrix*/
+    for (i=0; i<row; i++)
+    {
+        randm[i] = (double *)R_alloc(column,sizeof(double)); //Initiate the Random community at row i
 
+        for (p=0;p<column;p++) //Get obs community i
+        {
+            randrow[i][p]=m[i][p];
         }
 
-    mattovec(v,m,row,column);
+        for (j=0; j<column-1; j++) // randomly sample one species at a time across all rows of community i
+        {
+            for(b=0; b<q; b++)// Sum vector s to give the number to be passed to intrand
+                {
+                sum = sum + s[i];
+                }
+            k=intrand(sum);
+            randm[i][j]=randrow[i][k];//Assign element randm i,j a random element from the community
+            double *randrow[q-1];//Reinitialize randrow THIS WILL PROB BE A BUG IN THE CODE
+
+            /*Fill randrow with all the elements of community i that have not been sampled yet
+            A bug may also come up here if q=k...*/
+            we=0;
+            while(we<q-1)
+                {
+                for (p=0;p<q-k;p++)
+                    {
+                    randrow[i][we]=m[i][p];
+                    we++;
+                    }
+                for (p=k+1;p<q;p++)
+                    {
+                    randrow[i][we]=m[i][p];
+                    we++;
+                    }
+                }
+            q=q-1;
+            }
+        }
+
+    mattovec(v,randm,row,column);
+
     PutRNGstate();
 }

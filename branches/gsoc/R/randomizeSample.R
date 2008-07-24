@@ -11,7 +11,9 @@ function(samp, null.model=c("frequency","richness","both"),it=10000) {
 	    return(data.frame(apply(samp,2,sample),row.names=row.names(samp)))
 	}
 	if (identical(null.model,"richness")) {
-	    return(t(data.frame(apply(samp,1,sample),row.names=colnames(samp))))
+	    ret1 <- .C("richnessindex", m=as.numeric(samp), as.integer(nrow(samp)), as.integer(ncol(samp)), PACKAGE="picante")
+      return(matrix(ret1$randm,nrow=nrow(samp),dimnames=list(rownames(samp),colnames(samp))))
+      #return(t(data.frame(apply(samp,1,sample),row.names=colnames(samp))))
 	}
 	if (identical(null.model,"both")) 
     {
