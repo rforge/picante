@@ -85,79 +85,11 @@ void trialswap(double *v, int *pintervals, int *prow, int *pcolumn)
     PutRNGstate();
 }
 
-void richnessindex(double *v, int *prow, int *pcolumn)
-{
-    int i, j, k, q, p, b, sum=0, we;
-    int row, column;
-    double **m, **randm;
-    row = *prow;
-    column = *pcolumn;
-    q = column;
-    double *randrow[column];
-
-    m = vectomat(v,row,column);//Change the vector v passed from R back to a Matrix
-
-    /*make list of ONES THE LENGTH OF THE COLUMNS*/
-    int s[column];
-    int t;
-    for (t=0;t<column;t++)
-    {
-        s[t]=1;
-    }
-    //////////////////////////////////
-
-    randm = (double **)R_alloc(row,sizeof(double *)); //Initiate the Random Matrix
-    //randrow = (double *)R_alloc(column,sizeof(double)); //Initiate a vector to hold the community that is being randomized
-
-    /*Begin looping to create random matrix*/
-    for (i=0; i<row; i++)
-    {
-        randm[i] = (double *)R_alloc(column,sizeof(double)); //Initiate the Random community at row i
-
-        for (p=0;p<column;p++) //Get obs community i
-        {
-            randrow[i][p]=m[i][p];
-        }
-
-        for (j=0; j<column-1; j++) // randomly sample one species at a time across all rows of community i
-        {
-            for(b=0; b<q; b++)// Sum vector s to give the number to be passed to intrand
-                {
-                sum = sum + s[i];
-                }
-            k=intrand(sum);
-            randm[i][j]=randrow[i][k];//Assign element randm i,j a random element from the community
-            double *randrow[q-1];//Reinitialize randrow THIS WILL PROB BE A BUG IN THE CODE
-
-            /*Fill randrow with all the elements of community i that have not been sampled yet
-            A bug may also come up here if q=k...*/
-            we=0;
-            while(we<q-1)
-                {
-                for (p=0;p<q-k;p++)
-                    {
-                    randrow[i][we]=m[i][p];
-                    we++;
-                    }
-                for (p=k+1;p<q;p++)
-                    {
-                    randrow[i][we]=m[i][p];
-                    we++;
-                    }
-                }
-            q=q-1;
-            }
-        }
-
-    mattovec(v,randm,row,column);
-
-    PutRNGstate();
-}
 
 void richness(double *v, int *prow, int *pcolumn)
 {
 
-    int i,j,k,l;
+    int i,j,k;
     int row, column;
 	double tmp;
     double **m;
@@ -172,7 +104,7 @@ void richness(double *v, int *prow, int *pcolumn)
     {
         for (j=0;j<column;j++)
         {
-            while((k=intrand(column))==j);//choose another column (species) at random
+            k=intrand(column);//choose another column (species) at random
             tmp = m[i][j];
             m[i][j] = m[i][k];
             m[i][k] = tmp;
@@ -185,7 +117,7 @@ void richness(double *v, int *prow, int *pcolumn)
 void frequency(double *v, int *prow, int *pcolumn)
 {
 
-    int i,j,k,l;
+    int i,j,k;
     int row, column;
 	double tmp;
     double **m;
@@ -200,7 +132,7 @@ void frequency(double *v, int *prow, int *pcolumn)
     {
         for (j=0;j<row;j++)
         {
-            while((k=intrand(row))==j);//choose another row (sample) at random
+            k=intrand(row);//choose another row (sample) at random
             tmp = m[j][i];
             m[j][i] = m[k][i];
             m[k][i] = tmp;

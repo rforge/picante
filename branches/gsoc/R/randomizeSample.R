@@ -3,7 +3,7 @@
 } 
 
 `randomizeSample` <-
-function(samp, null.model=c("frequency","richness","richnessindex","both","trialswap"), lang=c("C","R"), it=1000) {
+function(samp, null.model=c("frequency","richness","independentswap","trialswap"), lang=c("C","R"), it=1000) {
 
     samp <- as.matrix(samp)
     lang <- match.arg(lang)
@@ -27,12 +27,7 @@ function(samp, null.model=c("frequency","richness","richnessindex","both","trial
     	}
 	}
 
-	if (identical(null.model,"richnessindex")) {
-	    ret1 <- .C("richnessindex", m=as.numeric(samp), as.integer(nrow(samp)), as.integer(ncol(samp)), PACKAGE="picante")
-        return(matrix(ret1$randm,nrow=nrow(samp),dimnames=list(rownames(samp),colnames(samp))))
-	}
-
-	if (identical(null.model,"both")) 
+	if (identical(null.model,"independentswap")) 
     {
         if (identical(lang,"R")) {
             #check for presence-absence and warn until abundance implemented
