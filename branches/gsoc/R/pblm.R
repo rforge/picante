@@ -248,6 +248,7 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
   	d1<-abs(est$par[1])
   	d2<-abs(est$par[2])
   	
+  	
     # Calculate EGLS coef w estimated ds 
   	V1<-(d1^tau1)*(1-d1^(2*initV1))/(1-d1^2)
     V2<-(d2^tau2)*(1-d2^(2*initV2))/(1-d2^2)
@@ -357,7 +358,7 @@ pblm<-function(assocs,tree1=NULL,tree2=NULL,covars1=NULL,covars2=NULL,bootstrap=
     # If bootstrapping not performed
     
     conf<-matrix(NA,2,2)
-    signal.strength<-data.frame(cbind(conf[1,],dtrue,conf[2,]))
+    signal.strength<-data.frame(cbind(conf[1,],c(d1,d2),conf[2,]))
     rownames(signal.strength)<-c("d1","d2")
     colnames(signal.strength)<-c("booted lower CI 95%","estimate","booted upper CI 95%")
     output<-list(MSE=MSEs,signal.strength=signal.strength,coefficients=data.frame(coefs),CI.boot=NULL,variates=data.frame(data.vecs),predicted=predicted,residuals=residuals,bootvalues=NULL,phylocovs=phylocovs)
