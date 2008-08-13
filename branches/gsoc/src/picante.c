@@ -86,6 +86,7 @@ void trialswap(double *v, int *pintervals, int *prow, int *pcolumn)
 }
 
 
+
 void richness(double *v, int *prow, int *pcolumn)
 {
 
