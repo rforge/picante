@@ -18,6 +18,7 @@ randomizeSample(samp, null.model = c("frequency", "richness", "independentswap",
     \item{trialswap}{Randomize community data matrix with the trial-swap algorithm (Miklos & Podani 2004) by drawing species from sample pool with probability weighted by occurrence frequency (maintains both species occurrence frequency and sample species richness)}
   }
   \item{lang}{run code in C or R? C is faster.} 
+  \item{it}{ number of independent or trial-swaps to perform }
 }
 \value{
   Randomized community data matrix

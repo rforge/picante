@@ -47,12 +47,14 @@ pblmpredict(x,tree1.w.novel=NULL,tree2.w.novel=NULL,predict.originals=FALSE)
   \item{CI.boot}{ 95 percent CIs for all parameters }
   \item{variates}{ matrix of model variates (can be used for plotting) }
   \item{residuals}{ matrix of residuals from the three models (full, star and base) }
+  \item{predicted}{ predicted associations }
   \item{bootvalues}{ matrix of parameters estimated from the \code{nreps} bootstrap replicated data sets used to calculate CIs }
-  \item{cors.1}{ correlations among predicted and observed associations for species of tree1, \code{NA} if \code{predict.originals=FALSE} }
-  \item{cors.2}{ correlations among predicted and observed associations for species of tree2,  \code{NA} if \code{predict.originals=FALSE} }
-  \item{pred.novels1}{ predicted associations for the novel speices of tree1 }
-  \item{pred.novels2}{ predicted associations for the novel speices of tree2 }
-}
+  \item{phylocovs}{ phylogenetic covariance matricies scaled by the estimated \code{d1} and \code{d2} }
+  \item{cors.1}{ correlations among predicted and observed associations for species of \code{tree1}, \code{NA} if \code{predict.originals=FALSE} }
+  \item{cors.2}{ correlations among predicted and observed associations for species of \code{tree2},  \code{NA} if \code{predict.originals=FALSE} }
+  \item{pred.novels1}{ predicted associations for the novel speices of \code{tree1} }
+  \item{pred.novels2}{ predicted associations for the novel speices of \code{tree2} }
+}      
 
 
 
