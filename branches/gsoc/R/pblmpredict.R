@@ -1,7 +1,7 @@
 pblmpredict<-function(x,tree1.w.novel=NULL,tree2.w.novel=NULL,predict.originals=FALSE)
 {
   if (!identical(class(x),"pblm")) stop("x must be of class pblm")
-  if(is.null(phylocovs$V1) | is.null(phylocovs$V2)) stop("a pblm fit with phylogenies must be supplied")
+  if(is.null(x$phylocovs$V1) | is.null(x$phylocovs$V2)) stop("a pblm fit with phylogenies must be supplied")
   
   sppnames1.orig<-rownames(x$phylocovs$V1)
   sppnames2.orig<-rownames(x$phylocovs$V2)
