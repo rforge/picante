@@ -53,11 +53,21 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     <li>Mean pairwise distance and mean distance to nearest neighbour among co-occurring species (can be used with any interspecific distance measure)</li>
     <li>Correlations between species co-occurrence and phylogenetic distances</li>
     <li>Phylogenetic diversity measures of Helmus et al. (2007).</li>
-    <li>Phylogenetic community-environment regressions of Helmus et al. (2007).
+    <li>Phylogenetic community-environment regressions of Helmus et al. (2007).</li>
     </ul>
 <li>Phylogenetic signal (Blomberg <em>et al.</em>'s K statistic and P-value based on randomization test)</li>
 <li>Independent contrasts for traits with circular distributions</li>
 <li>Null models for community and phylogeny randomization</li>
+    <ul>
+    <li>Shuffle taxa labels across tips of phylogeny</li>
+    <li>Randomize community co-occurrence data
+        <ul>
+        <li>maintaining species occurrence frequency</li>
+        <li>maintaining sample species richness</li>
+        <li>maintaining both species occurrence frequency and sample species richness using independent swap (Gotelli 2000) or trial swap (Miklos and Podani 2004)</li>
+        </ul>
+    </li>
+    </ul>
 <li>Ives and Godfray's (2006) phylogenetic bipartite linear model.
 <li>Utility functions to read/write data in <a href="http://phylodiversity.net/phylocom/">Phylocom</a> format</li>
 <li>Tree plotting and labelling functions</li>
@@ -65,7 +75,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Obtaining picante</h2>
 <ul>
-<li>Version 0.3-0 (stable) is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>Version 0.4-0 (stable) is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
 <li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
 </ul>
 
@@ -74,6 +84,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Release history</h2>
 <p><ul>
+<li>Version 0.4-0: New features and greatly improved speed of community randomizations (randomizeSample). New phylogenetic bipartite linear models functionality added.</li>
 <li>Version 0.3-0: Bugfixes. Added phylogenetic bipartite linear models, phylogenetic community-environment regressions.</li>
 <li>Version 0.2-0: Added new community phylogenetic structure metrics (PSR/PSV/PSC methods of Helmus et al.) and phylogenetic species richness accumulation curves</li>
 <li>Version 0.1-2: Initial public release</li>
