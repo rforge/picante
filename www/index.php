@@ -39,10 +39,10 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <!-- end of project description -->
 <h2>About picante</h2>
 <p>The picante package aims to provide a comprehensive set of tools for analyzing the phylogenetic and trait diversity of ecological communities in R, along with a set of tools for other comparative analyses and manipulations of phenotypic and phylogenetic data.</p>
-<p><strong>Package maintainer:</strong> Steve Kembel</p>
-<p><strong>Developers:</strong> Peter Cowan, Matthew Helmus, Steve Kembel</p>
+<p><strong>Package maintainer:</strong> Steven Kembel</p>
+<p><strong>Developers:</strong> Peter Cowan, Matthew Helmus, Steven Kembel</p>
 <p><strong>Contributors:</strong> David Ackerly, Simon Blomberg, Peter Cowan,
-    Matthew Helmus, Steve Kembel, Cam Webb<p>
+    Matthew Helmus, Steven Kembel, Helene Morlon, Cam Webb<p>
 <p>Development of picante has been supported by <a href="http://nserc.ca">NSERC</a>, <a href="http://www.nescent.org/index.php">NESCent</a>, and the <a href="http://code.google.com/soc/2008/">Google Summer of Code</a>.
 
 <h2>Current features</h2>
@@ -54,6 +54,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     <li>Correlations between species co-occurrence and phylogenetic distances</li>
     <li>Phylogenetic diversity measures of Helmus et al. (2007).</li>
     <li>Phylogenetic community-environment regressions of Helmus et al. (2007).</li>
+    <li>Phylogenetic beta diversity measures (phylosor of Bryant et al. 2008).</li>
     </ul>
 <li>Phylogenetic signal (Blomberg <em>et al.</em>'s K statistic and P-value based on randomization test)</li>
 <li>Independent contrasts for traits with circular distributions</li>
@@ -75,7 +76,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Obtaining picante</h2>
 <ul>
-<li>Version 0.4-0 (stable) is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>Version 0.5-0 (stable) is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
 <li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
 </ul>
 
@@ -84,6 +85,11 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Release history</h2>
 <p><ul>
+<li>Version 0.5-0:
+    <ul><li>Phylogenetic beta diversity measures (phylosor)</li>
+    <li>Minor bugfixes</li>
+    </ul>
+</li>
 <li>Version 0.4-0: New features and greatly improved speed of community randomizations (randomizeSample). New phylogenetic bipartite linear models functionality added.</li>
 <li>Version 0.3-0: Bugfixes. Added phylogenetic bipartite linear models, phylogenetic community-environment regressions.</li>
 <li>Version 0.2-0: Added new community phylogenetic structure metrics (PSR/PSV/PSC methods of Helmus et al.) and phylogenetic species richness accumulation curves</li>

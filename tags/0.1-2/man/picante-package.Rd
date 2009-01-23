@@ -18,8 +18,8 @@ License: \tab GPL-2\cr
 }
 }
 \author{
-Steve Kembel <skembel@berkeley.edu>, David Ackerly <dackerly@berkeley.edu>, Simon Blomberg <s.blomberg1@uq.edu.au>, Peter Cowan <pdc@berkeley.edu>, Cam Webb <cwebb@oeb.harvard.edu>
+Steven Kembel <skembel@uoregon.edu>, David Ackerly <dackerly@berkeley.edu>, Simon Blomberg <s.blomberg1@uq.edu.au>, Peter Cowan <pdc@berkeley.edu>, Cam Webb <cwebb@oeb.harvard.edu>
 
-Maintainer: Steve Kembel <skembel@berkeley.edu>
+Maintainer: Steven Kembel <skembel@uoregon.edu>
 }
 \keyword{package}

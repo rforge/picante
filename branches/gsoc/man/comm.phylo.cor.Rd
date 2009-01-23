@@ -35,7 +35,7 @@ comm.phylo.cor(samp, phylo,
     \item{random.corrs}{A vector of random correlation calculated for each run}
 }
 \references{ Cavender-Bares J., D.A. Ackerly, D. Baum and F.A. Bazzaz. 2004. Phylogenetic overdispersion in Floridian oak communities, American Naturalist, 163(6):823-843. }
-\author{ Steve Kembel <skembel@berkeley.edu> }
+\author{ Steven Kembel <skembel@uoregon.edu> }
 \section{Warning }{ Weighted null model currently only works with presence-absence data. Convert your data to presence-absence before using this null model (e.g. \code{decostand(x,method="pa")})}
 \examples{
 data(phylocom)

@@ -34,7 +34,7 @@ ses.mpd(samp, dis, null.model = c("taxa.labels", "sample.pool",
   \item{runs}{Number of randomizations}  
 }
 \references{ Webb, C.O., Ackerly, D.D., and Kembel, S.W. 2008. Phylocom: software for the analysis of phylogenetic community structure and trait evolution. Version 4.0.1. \url{http://www.phylodiversity.net/phylocom/}. }
-\author{ Steve Kembel <skembel@berkeley.edu> }
+\author{ Steven Kembel <skembel@uoregon.edu> }
 \section{Warning }{ Weighted null model currently only works with presence-absence data. Convert your data to presence-absence before using this null model (e.g. \code{decostand(x,method="pa")})}
 \seealso{ \code{\link{mpd}} }
 \examples{

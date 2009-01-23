@@ -28,7 +28,7 @@ randomizeSample(samp, null.model = c("frequency", "richness", "independentswap",
 \cr
 Miklos I. & Podani J. 2004. Randomization of presence-absence matrices: Comments and new algorithms. Ecology 85: 86-92.
 }
-\author{ Steve Kembel <skembel@berkeley.edu> }
+\author{ Steven Kembel <skembel@uoregon.edu> }
 \examples{
 data(phylocom)
 randomizeSample(phylocom$sample, null.model="richness")}
