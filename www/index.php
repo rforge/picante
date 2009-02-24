@@ -82,7 +82,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Release history</h2>
 <p><ul>
-<li>Veresion 0.6: Bugfix release. Changes to pd and phylosor functions.</li>
+<li>Version 0.6: Bugfix release. Changes to pd and phylosor functions.</li>
 <li>Version 0.5: Phylogenetic beta diversity measures (phylosor) with randomization testing.</li>
 <li>Version 0.4: New features and greatly improved speed of community randomizations (randomizeSample). New phylogenetic bipartite linear models functionality added.</li>
 <li>Version 0.3: Bugfixes. Added phylogenetic bipartite linear models, phylogenetic community-environment regressions.</li>
