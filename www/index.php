@@ -23,27 +23,24 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <body>
 
-<! --- R-Forge Logo --- >
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-<tr><td>
-<a href="/"><img src="<?php echo $themeroot; ?>/images/logo.png" border="0" alt="R-Forge Logo" /> </a> </td>
-</tr>
-</table>
-
-
-<!-- get project title  -->
 <!-- own website starts here, the following may be changed as you like -->
 <h1>picante</h1>
 <h2><strong>P</strong>hylocom <strong>i</strong>ntegration, <strong>c</strong>ommunity <strong>a</strong>nalyses, <strong>n</strong>ull-models, <strong>t</strong>raits and <strong>e</strong>volution in R</h2>
 
 <!-- end of project description -->
 <h2>About picante</h2>
-<p>The picante package aims to provide a comprehensive set of tools for analyzing the phylogenetic and trait diversity of ecological communities in R, along with a set of tools for other comparative analyses and manipulations of phenotypic and phylogenetic data.</p>
+<p>The picante package aims to provide a comprehensive set of tools for analyzing the phylogenetic and trait diversity of ecological communities in R, along with other comparative analyses and manipulations of phenotypic and phylogenetic data.</p>
 <p><strong>Package maintainer:</strong> Steven Kembel</p>
 <p><strong>Developers:</strong> Peter Cowan, Matthew Helmus, Steven Kembel</p>
 <p><strong>Contributors:</strong> David Ackerly, Simon Blomberg, Peter Cowan,
     Matthew Helmus, Steven Kembel, Helene Morlon, Cam Webb<p>
-<p>Development of picante has been supported by <a href="http://nserc.ca">NSERC</a>, <a href="http://www.nescent.org/index.php">NESCent</a>, and the <a href="http://code.google.com/soc/2008/">Google Summer of Code</a>.
+<p>Development of picante has been supported by <a href="http://nserc.ca">NSERC</a>, <a href="http://www.nescent.org/index.php">NESCent</a>, and the <a href="http://code.google.com/soc/2008/">Google Summer of Code</a>.</p>
+
+<h2>News</h2>
+<ul>
+<li>The pd and phylosor functions in version 0.5 of picante could result in incorrect calculation of phylosor in cases where the supplied phylogeny included taxa not present in any sample, or when pairs of samples collectively contained all taxa in the phylogeny. These functions have been updated in version 0.6, please see the documentation for more information about how PD and phylosor are calculated. Thanks to Catherine Graham, Nick Matzke, Juan Parra, and Marten Winter for feedback and bug reports on this issue.
+</li>
+</ul>
 
 <h2>Current features</h2>
 <ul>
@@ -76,7 +73,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Obtaining picante</h2>
 <ul>
-<li>Version 0.5-3 (stable) is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>Version 0.6 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
 <li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
 </ul>
 
@@ -85,21 +82,23 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Release history</h2>
 <p><ul>
-<li>Version 0.5-3:
-    <ul><li>Phylogenetic beta diversity measures (phylosor) with randomization testing</li>
-    <li>Minor bugfixes</li>
-    </ul>
-</li>
-<li>Version 0.4-0: New features and greatly improved speed of community randomizations (randomizeSample). New phylogenetic bipartite linear models functionality added.</li>
-<li>Version 0.3-0: Bugfixes. Added phylogenetic bipartite linear models, phylogenetic community-environment regressions.</li>
-<li>Version 0.2-0: Added new community phylogenetic structure metrics (PSR/PSV/PSC methods of Helmus et al.) and phylogenetic species richness accumulation curves</li>
-<li>Version 0.1-2: Initial public release</li>
+<li>Veresion 0.6: Bugfix release. Changes to pd and phylosor functions.</li>
+<li>Version 0.5: Phylogenetic beta diversity measures (phylosor) with randomization testing.</li>
+<li>Version 0.4: New features and greatly improved speed of community randomizations (randomizeSample). New phylogenetic bipartite linear models functionality added.</li>
+<li>Version 0.3: Bugfixes. Added phylogenetic bipartite linear models, phylogenetic community-environment regressions.</li>
+<li>Version 0.2: Added new community phylogenetic structure metrics (PSR/PSV/PSC methods of Helmus et al.) and phylogenetic species richness accumulation curves</li>
+<li>Version 0.1: Initial public release</li>
 </ul>
 </p>
 
-<p><a href="http://www4.clustrmaps.com/counter/maps.php?url=http://picante.r-forge.r-project.org/" id="clustrMapsLink"><img src="http://www4.clustrmaps.com/counter/index2.php?url=http://picante.r-forge.r-project.org/" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onerror="this.onerror=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com';" />
-</a>
-</p>
+<! --- R-Forge Logo --- >
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr><td ALIGN="center">
+<a href="/"><img src="<?php echo $themeroot; ?>/images/logo.png" border="0" alt="R-Forge Logo" /> </a> </td>
+<td ALIGN="center"><a href="http://www4.clustrmaps.com/counter/maps.php?url=http://picante.r-forge.r-project.org/" id="clustrMapsLink"><img src="http://www4.clustrmaps.com/counter/index2.php?url=http://picante.r-forge.r-project.org/" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onerror="this.onerror=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com';" />
+</a></td>
+</tr>
+</table>
 
 </body>
 </html>
