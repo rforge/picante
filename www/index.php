@@ -38,7 +38,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>News</h2>
 <ul>
-<li>The pd and phylosor functions in version 0.5 of picante could result in incorrect calculation of phylosor in cases where the supplied phylogeny included taxa not present in any sample, or when pairs of samples collectively contained all taxa in the phylogeny. These functions have been updated in version 0.6, please see the documentation for more information about how PD and phylosor are calculated. Thanks to Catherine Graham, Nick Matzke, Juan Parra, and Marten Winter for feedback and bug reports on this issue.
+<li>The pd and phylosor functions in version 0.5 of picante could result in incorrect calculation of phylosor in cases where the supplied phylogeny included taxa not present in any sample, or when pairs of samples collectively contained all taxa in the phylogeny. These functions have been updated in version 0.6, please see the documentation for more information about how PD and phylosor are calculated.</li>
+<li>Thanks to Catherine Graham, Nathaniel Hallinan, Nick Matzke, Alain Paquette, Juan Parra, and Marten Winter for feedback and bug reports.</li>
 </li>
 </ul>
 
