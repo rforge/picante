@@ -1,22 +1,10 @@
 TODO list for picante package
-
-General notes: Many functions are untested. Do not use any of these functions for 'real' analysis without getting in touch with a project developer first.
-
-TODO
 ====
-For 0.1
--------
--improve documentation for public release
 -data name checking and matching - currently many functions expect data to have names that match e.g. phylo$tip.labels, should handle/check lack of names and warn. Write helper function.
-
-For 0.2 and beyond
--------
 -reinstate function to call out to phylocom executable and read results back in to R
--implement null model heavy lifting in C code - see BB's email for a start
 -allow trait data to be a vector or a data.frame (single or multiple columns)
--implement contrib index and similar
--move to phylobase format
--qr on com.phylo.corr as option
+-implement contribution index, nodesig, and similar node-based statistics from phylocom
+-work with phylobase/xml format trees/data
 -trait gradient analysis and contrast diagnostics functions from DDA
 -taxaShuffle and comstruct functions - rewrite to use indices in place of names for efficiency
 -vignettes

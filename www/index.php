@@ -24,35 +24,42 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <body>
 
 <!-- own website starts here, the following may be changed as you like -->
-<h1>picante</h1>
-<h2><strong>P</strong>hylocom <strong>i</strong>ntegration, <strong>c</strong>ommunity <strong>a</strong>nalyses, <strong>n</strong>ull-models, <strong>t</strong>raits and <strong>e</strong>volution in R</h2>
-
+<h1 align="center">picante: R tools for integrating phylogenies and ecology</h1>
 <!-- end of project description -->
+<img border=3 src="picante.jpg" alt="picante traitgram" align="right" />
 <h2>About picante</h2>
-<p>The picante package aims to provide a comprehensive set of tools for analyzing the phylogenetic and trait diversity of ecological communities in R, along with other comparative analyses and manipulations of phenotypic and phylogenetic data.</p>
+<p>The picante package provides tools for <strong>P</strong>hylocom <strong>i</strong>ntegration, <strong>c</strong>ommunity <strong>a</strong>nalyses, <strong>n</strong>ull-models, <strong>t</strong>raits and <strong>e</strong>volution in R.</p>
+<p>The package includes functions for analyzing the phylogenetic and trait diversity of ecological communities, comparative analyses, and the display and manipulation of phenotypic and phylogenetic data.</p>
 <p><strong>Package maintainer:</strong> Steven Kembel</p>
 <p><strong>Developers:</strong> Peter Cowan, Matthew Helmus, Steven Kembel</p>
 <p><strong>Contributors:</strong> David Ackerly, Simon Blomberg, Peter Cowan,
-    Matthew Helmus, Steven Kembel, Helene Morlon, Cam Webb<p>
+    Matthew Helmus, Steven Kembel, Helene Morlon, Cam Webb<p>    
 <p>Development of picante has been supported by <a href="http://nserc.ca">NSERC</a>, <a href="http://www.nescent.org/index.php">NESCent</a>, and the <a href="http://code.google.com/soc/2008/">Google Summer of Code</a>.</p>
+<p>Thanks to Kyle Dexter, Catherine Graham, Nathaniel Hallinan, Nick Matzke, Alain Paquette, Juan Parra, and Marten Winter for feedback and bug reports.</p>
 
 <h2>News</h2>
 <ul>
-<li>The pd and phylosor functions in version 0.5 of picante could result in incorrect calculation of phylosor in cases where the supplied phylogeny included taxa not present in any sample, or when pairs of samples collectively contained all taxa in the phylogeny. These functions have been updated in version 0.6, please see the documentation for more information about how PD and phylosor are calculated.</li>
-<li>Thanks to Catherine Graham, Nathaniel Hallinan, Nick Matzke, Alain Paquette, Juan Parra, and Marten Winter for feedback and bug reports.</li>
+<li>Several changes and new features in version 0.7
+<ul>
+<li>Added phylobeta diversity measures (comdist/comdistnt) and abundance-weighted phylognetic diversity (mpd/mntd)</li>
+<li>Added quantile regressions of co-occurrence vs. phylogenetic distance (comm.phylo.qr)</li>
+<li>Plot continuous trait values as tips of a phylogeny (traitgram)</li>
+<li>The mnnd and ses.mnnd functions have been renamed to mntd and ses.mntd, respectively, for consistency with naming conventions in <a href="http://phylodiversity.net/phylocom">Phylocom</a>.</li>
+</ul>
 </li>
+<li>The pd and phylosor functions in version 0.5 of picante could result in incorrect calculation of phylosor in cases where the supplied phylogeny included taxa not present in any sample, or when pairs of samples collectively contained all taxa in the phylogeny. These functions have been updated in versions of picante >0.5, please see the documentation for more information about how PD and phylosor are calculated.</li>
 </ul>
 
 <h2>Current features</h2>
 <ul>
-<li>Community phylogenetic and trait similarity measures</li>
+<li>Community phylogenetic and trait diversity</li>
     <ul>
-    <li>Webb's NRI/NTI and related measures of standardized effect size of community structure</li>
-    <li>Mean pairwise distance and mean distance to nearest neighbour among co-occurring species (can be used with any interspecific distance measure)</li>
-    <li>Correlations between species co-occurrence and phylogenetic distances</li>
-    <li>Phylogenetic diversity measures of Helmus et al. (2007).</li>
+    <li>Webb's NRI/NTI and related measures of standardized effect size of community phylogenetic structure</li>
+    <li>Mean pairwise distance and mean distance to nearest taxon among co-occurring species (can be used with any interspecific distance measure). Distances can be calculated based on presence or abundance in samples.</li>
+    <li>Correlations and quantile regressions between species co-occurrence and phylogenetic distances</li>
+    <li>Phylogenetic species richness, evenness and variance of Helmus et al. (2007).</li>
     <li>Phylogenetic community-environment regressions of Helmus et al. (2007).</li>
-    <li>Phylogenetic beta diversity measures (phylosor of Bryant et al. 2008).</li>
+    <li>Phylogenetic beta diversity measures (phylosor, betaMPD, betaMNTD).</li>
     </ul>
 <li>Phylogenetic signal (Blomberg <em>et al.</em>'s K statistic and P-value based on randomization test)</li>
 <li>Independent contrasts for traits with circular distributions</li>
@@ -74,7 +81,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Obtaining picante</h2>
 <ul>
-<li>Version 0.6 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>Version 0.7 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
 <li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
 </ul>
 
@@ -83,6 +90,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Release history</h2>
 <p><ul>
+<li>Version 0.7: comm.phylo.qr function (quantile regression of co-occurrence and phylogenetic distance). traitgram function. Changed mnnd terminology to mntd. Added phylogenetic beta diversity measures comdist/comdistnt. Abundance weighting of mpd/mntd.
 <li>Version 0.6: Bugfix release. Changes to pd and phylosor functions.</li>
 <li>Version 0.5: Phylogenetic beta diversity measures (phylosor) with randomization testing.</li>
 <li>Version 0.4: New features and greatly improved speed of community randomizations (randomizeSample). New phylogenetic bipartite linear models functionality added.</li>
@@ -95,7 +103,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <! --- R-Forge Logo --- >
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
 <tr><td ALIGN="center">
-<a href="/"><img src="<?php echo $themeroot; ?>/images/logo.png" border="0" alt="R-Forge Logo" /> </a> </td>
+<a href="http://r-forge.r-project.org"><img src="<?php echo $themeroot; ?>/images/logo.png" border="0" alt="R-Forge" /> </a> </td>
 <td ALIGN="center"><a href="http://www4.clustrmaps.com/counter/maps.php?url=http://picante.r-forge.r-project.org/" id="clustrMapsLink"><img src="http://www4.clustrmaps.com/counter/index2.php?url=http://picante.r-forge.r-project.org/" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onerror="this.onerror=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com';" />
 </a></td>
 </tr>
