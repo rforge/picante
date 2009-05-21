@@ -18,14 +18,16 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
   <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><?php echo $group_name; ?></title>
-	<link href="<?php echo $themeroot; ?>styles/estilo1.css" rel="stylesheet" type="text/css" />
+	<link href="picantestyle.css" rel="stylesheet" type="text/css" />
   </head>
 
 <body>
 
-<!-- own website starts here, the following may be changed as you like -->
+<div id = "header">
 <h1 align="center">picante: R tools for integrating phylogenies and ecology</h1>
-<!-- end of project description -->
+</div>
+
+<div id = "content">
 <img border=3 src="picante.jpg" alt="picante traitgram" align="right" />
 <h2>About picante</h2>
 <p>The picante package provides tools for <strong>P</strong>hylocom <strong>i</strong>ntegration, <strong>c</strong>ommunity <strong>a</strong>nalyses, <strong>n</strong>ull-models, <strong>t</strong>raits and <strong>e</strong>volution in R.</p>
@@ -41,7 +43,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <ul>
 <li>Several changes and new features in version 0.7
 <ul>
-<li>Added phylobeta diversity measures (comdist/comdistnt) and abundance-weighted phylognetic diversity (mpd/mntd)</li>
+<li>Added phylobeta diversity measures (comdist/comdistnt)</li>
+<li>Abundance-weighted measures of phylognetic diversity and beta diversity (mpd/mntd/comdist/comdistnt)</li>
 <li>Added quantile regressions of co-occurrence vs. phylogenetic distance (comm.phylo.qr)</li>
 <li>Plot continuous trait values as tips of a phylogeny (traitgram)</li>
 <li>The mnnd and ses.mnnd functions have been renamed to mntd and ses.mntd, respectively, for consistency with naming conventions in <a href="http://phylodiversity.net/phylocom">Phylocom</a>.</li>
@@ -88,6 +91,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <h2>Obtaining help and more information about picante</h2>
 <p>Visit the <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>project summary page</strong></a> for bug reporting, feature requests, discussions, mailing lists, and access to the source code. If you have problems or questions about the code, please read the function documentation ( <code><strong>help(picante)</strong></code> ), and get in touch with us using one of the above methods.</p>
 
+<h2>Citing picante</h2>
+<p>A manuscript describing the software package is in preparation. In the meantime, you can cite picante as:
+<ul><li>
+S.W. Kembel, D.D. Ackerly, S.P. Blomberg, P.D. Cowan, M.R. Helmus, H. Morlon and C.O. Webb. 2009. picante: R tools for integrating phylogenies and ecology. R package version 0.7-0. http://picante.r-forge.r-project.org
+</li></ul>
+</p>
+
 <h2>Release history</h2>
 <p><ul>
 <li>Version 0.7: comm.phylo.qr function (quantile regression of co-occurrence and phylogenetic distance). traitgram function. Changed mnnd terminology to mntd. Added phylogenetic beta diversity measures comdist/comdistnt. Abundance weighting of mpd/mntd.
@@ -108,7 +118,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 </a></td>
 </tr>
 </table>
-
+</div>
 </body>
 </html>
 
