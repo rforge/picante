@@ -41,6 +41,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>News</h2>
 <ul>
+<li>By popular demand, version 0.7-1 adds the standardized effect size of Faith's PD (ses.pd)</li>
 <li>Several changes and new features in version 0.7
 <ul>
 <li>Added phylobeta diversity measures (comdist/comdistnt)</li>
@@ -57,7 +58,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <ul>
 <li>Community phylogenetic and trait diversity</li>
     <ul>
-    <li>Webb's NRI/NTI and related measures of standardized effect size of community phylogenetic structure</li>
+    <li>Faith's PD (phylogenetic diversity) and standardized effect size of PD.</li>
+    <li>Webb's NRI/NTI and related measures of standardized effect size of community phylogenetic structure.</li>
     <li>Mean pairwise distance and mean distance to nearest taxon among co-occurring species (can be used with any interspecific distance measure). Distances can be calculated based on presence or abundance in samples.</li>
     <li>Correlations and quantile regressions between species co-occurrence and phylogenetic distances</li>
     <li>Phylogenetic species richness, evenness and variance of Helmus et al. (2007).</li>
@@ -84,7 +86,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Obtaining picante</h2>
 <ul>
-<li>Version 0.7 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>Version 0.7-1 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
 <li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
 </ul>
 
@@ -94,12 +96,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <h2>Citing picante</h2>
 <p>A manuscript describing the software package is in preparation. In the meantime, you can cite picante as:
 <ul><li>
-S.W. Kembel, D.D. Ackerly, S.P. Blomberg, P.D. Cowan, M.R. Helmus, H. Morlon and C.O. Webb. 2009. picante: R tools for integrating phylogenies and ecology. R package version 0.7-0. http://picante.r-forge.r-project.org
+S.W. Kembel, D.D. Ackerly, S.P. Blomberg, P.D. Cowan, M.R. Helmus, H. Morlon and C.O. Webb. 2009. picante: R tools for integrating phylogenies and ecology. R package version 0.7-1. http://picante.r-forge.r-project.org
 </li></ul>
 </p>
 
 <h2>Release history</h2>
 <p><ul>
+<li>Version 0.7-1: Added ses.pd function</li>
 <li>Version 0.7: comm.phylo.qr function (quantile regression of co-occurrence and phylogenetic distance). traitgram function. Changed mnnd terminology to mntd. Added phylogenetic beta diversity measures comdist/comdistnt. Abundance weighting of mpd/mntd.
 <li>Version 0.6: Bugfix release. Changes to pd and phylosor functions.</li>
 <li>Version 0.5: Phylogenetic beta diversity measures (phylosor) with randomization testing.</li>
