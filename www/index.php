@@ -41,11 +41,11 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>News</h2>
 <ul>
-<li>By popular demand, version 0.7-1 adds the standardized effect size of Faith's PD (ses.pd)</li>
+<li>Version 0.7-1 adds the standardized effect size of Faith's PD (ses.pd)</li>
 <li>Several changes and new features in version 0.7
 <ul>
 <li>Added phylobeta diversity measures (comdist/comdistnt)</li>
-<li>Abundance-weighted measures of phylognetic diversity and beta diversity (mpd/mntd/comdist/comdistnt)</li>
+<li>Abundance-weighted measures of phylogenetic alpha and beta diversity (mpd/mntd/comdist/comdistnt)</li>
 <li>Added quantile regressions of co-occurrence vs. phylogenetic distance (comm.phylo.qr)</li>
 <li>Plot continuous trait values as tips of a phylogeny (traitgram)</li>
 <li>The mnnd and ses.mnnd functions have been renamed to mntd and ses.mntd, respectively, for consistency with naming conventions in <a href="http://phylodiversity.net/phylocom">Phylocom</a>.</li>
