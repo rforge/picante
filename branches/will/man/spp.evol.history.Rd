@@ -3,7 +3,7 @@
 \alias{spp.evol.history}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Evolutionary distinctiveness
 }
 \description{
 Evolutionary distinctiveness by: a) equal splits (Redding and Mooers 2006) b) fair proportions (Isaac et al., 2007). Returns a vector of species scores.
