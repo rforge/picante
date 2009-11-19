@@ -3,7 +3,7 @@
 \alias{tax.distinctiveness}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Taxonomic distinctiveness sensu Vane-Wright or May
 }
 \description{
 Taxic diversity: Vane-Wright et al., 1991 and May 1990 which accounts for polytomies by counting the number of branches descending from each node that lies on the path from a spp tip to the root (not just counting the number of nodes).
@@ -18,6 +18,7 @@ phylogeny in ape format
 }
   \item{type}{
 specify "Vane-Wright" or "May"
+}
 }
 
 

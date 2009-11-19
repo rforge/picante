@@ -2,6 +2,7 @@
 \Rdversion{1.1}
 \alias{evol.distinct}
 %- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
 Species' evolutionary distinctiveness
 }
@@ -19,7 +20,7 @@ a .phylo "APE" tree}
 a) equal splits (Redding and Mooers 2006) or b) fair proportions (Isaac et al., 2007)
 }
   \item{scale}{
-%%     The scale option refers to whether or not the phylogeny should be scaled to a depth of 1 or, in the case of an ultrametric tree,  scaled such that branch lengths are relative.
+The scale option refers to whether or not the phylogeny should be scaled to a depth of 1 or, in the case of an ultrametric tree,  scaled such that branch lengths are relative.
 }
   \item{use.branch.lengths}{
 If use.branch.lengths=FALSE, then all branch lengths are changed to 1.
@@ -34,7 +35,7 @@ Isaac, N.J.B., Turvey, S.T., Collen, B., Waterman, C. and Baillie, J.E.M. (2007)
 the EDGE: conservation priorities based on threat and phylogeny. PLoS ONE, 2, e296.
 
 Mark Vellend, William K. Cornwell, Karen Magnuson-Ford, and Arne ¯. Mooers. Measuring phylogenetic biodiversity
-In: Biological diversity: frontiers in measurement and assessment.  Edited by Anne Magurran & Brian McGill. in press
+In: Biological diversity: frontiers in measurement and assessment.  Edited by Anne Magurran and Brian McGill. in press
 }
 
 \author{
