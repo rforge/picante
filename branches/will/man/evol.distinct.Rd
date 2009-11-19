@@ -36,11 +36,14 @@ the EDGE: conservation priorities based on threat and phylogeny. PLoS ONE, 2, e2
 Mark Vellend, William K. Cornwell, Karen Magnuson-Ford, and Arne ¯. Mooers. Measuring phylogenetic biodiversity
 In: Biological diversity: frontiers in measurement and assessment.  Edited by Anne Magurran & Brian McGill. in press
 }
+
 \author{
 Karen Magnuson-Ford 
 Will Cornwell
 Arne Mooers
-Mark Vellend}
+Mark Vellend
+}
+
 \note{
 This function will return a vector of evolutionary distinctivenss for every species in the given tree.
 If only a subset of values are needed there are two, concetually distinct options: either prune the tree first and then pass the tree in or subset the resulting vector.  These two options
@@ -48,56 +51,3 @@ will provide very different outputs.
 }
 
 
-## The function is currently defined as
-function(tree, type=c("equal.splits", "fair.proportion"), scale=F, use.branch.lengths=TRUE){
-
-if(is.rooted(tree)==FALSE)
-warning("A rooted phylogeny is required for meaningful output of this function", call.=FALSE)
-
-if(scale==TRUE){
-#Scale tree to have unit depth (for an ultrametric tree) or scale all branches to unit length (for an additive tree)
-
-if(is.ultrametric(tree)==TRUE)
-tree<- rescaleTree(tree, 1) else 
-tree$edge.length<- tree$edge.length/sum(tree$edge.length)
-  }
-
-if(use.branch.lengths==FALSE)
-tree<- speciationalTree(tree)
-
-for(i in 1:length(tree$tip.label)){
-	spp<- tree$tip.label[i]
-	nodes<- get.nodes(tree, spp)
-	#get rid of root node
-	nodes<- nodes[1:(length(nodes)-1)]
-	
-	internal.brlen<- tree$edge.length[which(tree$edge[,2] \%in\% nodes)]
-
-#apportion internal branch lengths appropriately
-if(length(internal.brlen)!=0){
-internal.brlen<- internal.brlen*switch(type,
-	"equal.splits"=	sort(rep(.5,length(internal.brlen))^c(1:length(internal.brlen))),
-	"fair.proportion"= 1/for(j in 1:length(nodes)){
-		n.descendents<- length(node.leaves(tree, nodes[j]))
-		if(j==1)
-		portion<- n.descendents else
-		portion<- c(n.descendents, portion)
-		})}
-	
-	#sum internal branch lengths with the pendant edge
-	ED<- sum(internal.brlen, tree$edge.length[which.edge(tree, spp)])
-	
-	if(i==1)
-	w<- ED else
-	w<- c(w, ED)
-	}
-results<- cbind(tree$tip.label, as.data.frame(w))
-names(results)<- c("Species", "w")
-results
-	
-	}
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
