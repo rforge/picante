@@ -31,6 +31,7 @@ Mark Vellend, William K. Cornwell, Karen Magnuson-Ford, and Arne ¯. Mooers. Meas
 In: Biological diversity: frontiers in measurement and assessment.
 Edited by Anne Magurran & Brian McGill. in press
 }
+
 \author{
 Karen Magnuson-Ford 
 Will Cornwell
@@ -41,11 +42,6 @@ Mark Vellend
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
 function(tree, type=c("Vane-Wright", "May")){
