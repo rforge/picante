@@ -28,9 +28,9 @@ and the agony of choice. Biological Conservation, 55, 235-254.
 
 May, R.M. (1990). Taxonomy as destiny. Nature, 347, 129-130.
 
-Mark Vellend, William K. Cornwell, Karen Magnuson-Ford, and Arne ¯. Mooers. Measuring phylogenetic biodiversity
+Mark Vellend, William K. Cornwell, Karen Magnuson-Ford, and Arne Mooers. Measuring phylogenetic biodiversity
 In: Biological diversity: frontiers in measurement and assessment.
-Edited by Anne Magurran & Brian McGill. in press
+Edited by Anne Magurran and Brian McGill. in press
 }
 
 \author{
