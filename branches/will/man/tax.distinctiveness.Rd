@@ -23,7 +23,7 @@ specify "Vane-Wright" or "May"
 
 
 \references{
-Vane-Wright, R.I., Humphries, C.J. and Williams, P.H. (1991). What to protect? Ð Systematics
+Vane-Wright, R.I., Humphries, C.J. and Williams, P.H. (1991). What to protect? - Systematics
 and the agony of choice. Biological Conservation, 55, 235-254.
 
 May, R.M. (1990). Taxonomy as destiny. Nature, 347, 129-130.
