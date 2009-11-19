@@ -6,7 +6,7 @@
 Species' evolutionary distinctiveness
 }
 \description{
-Evolutionary distinctiveness measures for a suite of species by: a) equal splits (Redding and Mooers 2006) b) fair proportions (Isaac et al., 2007). Returns a vector of species scores.
+Calculates evolutionary distinctiveness measures for a suite of species by: a) equal splits (Redding and Mooers 2006) b) fair proportions (Isaac et al., 2007). Returns a vector of species scores.
 }
 \usage{
 evol.distinct(tree, type = c("equal.splits", "fair.proportion"), scale = F, use.branch.lengths = TRUE)
@@ -25,16 +25,7 @@ a) equal splits (Redding and Mooers 2006) or b) fair proportions (Isaac et al., 
 If use.branch.lengths=FALSE, then all branch lengths are changed to 1.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
+
 \references{
 Redding, D.W. and Mooers, A.O. (2006). Incorporating evolutionary measures into conservation
 prioritisation. Conservation Biology, 20, 1670-1678.
@@ -53,15 +44,6 @@ If only a subset of values are needed there are two, concetually distinct option
 will provide very different outputs.  
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
 function(tree, type=c("equal.splits", "fair.proportion"), scale=F, use.branch.lengths=TRUE){

@@ -4,7 +4,7 @@
 #The scale option refers to whether or not the phylogeny should be scaled to a depth of 1 or, in the case of an ultrametric tree,  scaled such that branch lengths are relative.
 #If use.branch.lengths=FALSE, then all branch lengths are changed to 1.
 
-evol.distinct<- function(tree, type=c("equal.splits", "fair.proportion"), scale=F, use.branch.lengths=TRUE){
+evol.distinct<- function(tree, type=c("equal.splits", "fair.proportion"), scale=FALSE, use.branch.lengths=TRUE){
 
 if(is.rooted(tree)==FALSE)
 warning("A rooted phylogeny is required for meaningful output of this function", call.=FALSE)
