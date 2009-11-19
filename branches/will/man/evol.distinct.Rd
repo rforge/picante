@@ -32,6 +32,9 @@ prioritisation. Conservation Biology, 20, 1670-1678.
 
 Isaac, N.J.B., Turvey, S.T., Collen, B., Waterman, C. and Baillie, J.E.M. (2007). Mammals on
 the EDGE: conservation priorities based on threat and phylogeny. PLoS ONE, 2, e296.
+
+Mark Vellend, William K. Cornwell, Karen Magnuson-Ford, and Arne ¯. Mooers. Measuring phylogenetic biodiversity
+In: Biological diversity: frontiers in measurement and assessment.  Edited by Anne Magurran & Brian McGill. in press
 }
 \author{
 Karen Magnuson-Ford 

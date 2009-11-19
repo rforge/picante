@@ -3,7 +3,7 @@ Type: Package
 Title: R tools for integrating phylogenies and ecology
 Version: 0.6-1
 Date: 2009-3-18
-Author: Steven Kembel <skembel@uoregon.edu>, David Ackerly <dackerly@berkeley.edu>, Simon Blomberg <s.blomberg1@uq.edu.au>, Peter Cowan <pdc@berkeley.edu>, Matthew Helmus <mrhelmus@wisc.edu>, Helene Morlon  <morlon.helene@gmail.com>, Campbell Webb <cwebb@oeb.harvard.edu>
+Author: Steven Kembel <skembel@uoregon.edu>, David Ackerly <dackerly@berkeley.edu>, Simon Blomberg <s.blomberg1@uq.edu.au>, Peter Cowan <pdc@berkeley.edu>, Matthew Helmus <mrhelmus@wisc.edu>, Helene Morlon  <morlon.helene@gmail.com>, Campbell Webb <cwebb@oeb.harvard.edu>, Will Cornwell <wcornwell@zoology.ubc.ca>
 Maintainer: Steven Kembel <skembel@uoregon.edu>
 Depends: ape, vegan, nlme, geiger
 Suggests: brglm, circular
