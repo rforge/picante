@@ -14,7 +14,7 @@ tax.distinctiveness(tree, type = c("Vane-Wright", "May"))
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{tree}{
-phylogeny in ape format
+an object of class phylo
 }
   \item{type}{
 specify "Vane-Wright" or "May"
