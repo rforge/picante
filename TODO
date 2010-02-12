@@ -1,6 +1,5 @@
 TODO list for picante package
 ====
--data name checking and matching - currently many functions expect data to have names that match e.g. phylo$tip.labels, should handle/check lack of names and warn. Write helper function.
 -reinstate function to call out to phylocom executable and read results back in to R
 -allow trait data to be a vector or a data.frame (single or multiple columns)
 -implement contribution index, nodesig, and similar node-based statistics from phylocom
