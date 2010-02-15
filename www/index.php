@@ -34,24 +34,21 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <p>The package includes functions for analyzing the phylogenetic and trait diversity of ecological communities, comparative analyses, and the display and manipulation of phenotypic and phylogenetic data.</p>
 <p><strong>Package maintainer:</strong> Steven Kembel</p>
 <p><strong>Developers:</strong> Peter Cowan, Matthew Helmus, Steven Kembel</p>
-<p><strong>Contributors:</strong> David Ackerly, Simon Blomberg, Peter Cowan,
-    Matthew Helmus, Steven Kembel, Helene Morlon, Cam Webb<p>    
+<p><strong>Contributors:</strong> David Ackerly, Simon Blomberg, Will Cornwell, Peter Cowan, Matthew Helmus, Steven Kembel, Helene Morlon, Cam Webb<p>    
 <p>Development of picante has been supported by <a href="http://nserc.ca">NSERC</a>, <a href="http://www.nescent.org/index.php">NESCent</a>, and the <a href="http://code.google.com/soc/2008/">Google Summer of Code</a>.</p>
-<p>Thanks to Kyle Dexter, Catherine Graham, Nathaniel Hallinan, Nick Matzke, Alain Paquette, Juan Parra, and Marten Winter for feedback and bug reports.</p>
+<p>Thanks to Kyle Dexter, Catherine Graham, Nathaniel Hallinan, Nick Matzke, Alain Paquette, Juan Parra, Dan Rabosky, and Marten Winter for feedback and bug reports.</p>
 
 <h2>News</h2>
 <ul>
-<li>Version 0.7 adds the standardized effect size of Faith's PD (ses.pd)</li>
-<li>Several changes and new features in version 0.7
+<li>Picante 1.0 has been released</li>
+<li>Lots of changes and new features in version 1.0!
 <ul>
-<li>Added phylobeta diversity measures (comdist/comdistnt)</li>
-<li>Abundance-weighted measures of phylogenetic alpha and beta diversity (mpd/mntd/comdist/comdistnt)</li>
-<li>Added quantile regressions of co-occurrence vs. phylogenetic distance (comm.phylo.qr)</li>
-<li>Plot continuous trait values as tips of a phylogeny (traitgram)</li>
-<li>The mnnd and ses.mnnd functions have been renamed to mntd and ses.mntd, respectively, for consistency with naming conventions in <a href="http://phylodiversity.net/phylocom">Phylocom</a>.</li>
+<li>Calculate Rao's quadratic entropy (alpha and beta diversity taking phylogenetic distinctiveness into account)</li>
+<li>Added more phylobeta diversity measures (UniFrac, Rao's quadratic entropy)</li>
+<li>Changed name of randomizeSample to randomizeMatrix for consistency with other functions</li>
+<li>Added automatic checks to ensure taxa labels in phylogeny and other data sets match</li>
 </ul>
 </li>
-<li>The pd and phylosor functions in version 0.5 of picante could result in incorrect calculation of phylosor in cases where the supplied phylogeny included taxa not present in any sample, or when pairs of samples collectively contained all taxa in the phylogeny. These functions have been updated in versions of picante >0.5, please see the documentation for more information about how PD and phylosor are calculated.</li>
 </ul>
 
 <h2>Current features</h2>
@@ -61,10 +58,12 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     <li>Faith's PD (phylogenetic diversity) and standardized effect size of PD.</li>
     <li>Webb's NRI/NTI and related measures of standardized effect size of community phylogenetic structure.</li>
     <li>Mean pairwise distance and mean distance to nearest taxon among co-occurring species (can be used with any interspecific distance measure). Distances can be calculated based on presence or abundance in samples.</li>
+    <li>Rao's quadratic entropy, a measure of diversity within and among communities optionally taking phylogenetic distinctiveness into account.</li>
     <li>Correlations and quantile regressions between species co-occurrence and phylogenetic distances</li>
     <li>Phylogenetic species richness, evenness and variance of Helmus et al. (2007).</li>
     <li>Phylogenetic community-environment regressions of Helmus et al. (2007).</li>
-    <li>Phylogenetic beta diversity measures (phylosor, betaMPD, betaMNTD).</li>
+    <li>Taxonomic and evolutionary distinctiveness of taxa for conservation biology.</li>
+    <li>Numerous phylogenetic beta diversity measures (phylosor, UniFrac, betaMPD, betaMNTD, Rao's quadratic entropy).</li>
     </ul>
 <li>Phylogenetic signal (Blomberg <em>et al.</em>'s K statistic and P-value based on randomization test)</li>
 <li>Independent contrasts for traits with circular distributions</li>
@@ -86,7 +85,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Obtaining picante</h2>
 <ul>
-<li>Version 0.7-2 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>Version 1.0-0 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
 <li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
 </ul>
 
@@ -94,14 +93,15 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <p>Visit the <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>project summary page</strong></a> for bug reporting, feature requests, discussions, mailing lists, and access to the source code. If you have problems or questions about the code, please read the function documentation ( <code><strong>help(picante)</strong></code> ), and get in touch with us using one of the above methods.</p>
 
 <h2>Citing picante</h2>
-<p>A manuscript describing the software package is in preparation. In the meantime, you can cite picante as:
+<p>If you use our software, please acknowledge our work by citing us! A manuscript describing the software package has been submitted. In the meantime, you can cite picante as:
 <ul><li>
-S.W. Kembel, D.D. Ackerly, S.P. Blomberg, P.D. Cowan, M.R. Helmus, H. Morlon and C.O. Webb. 2009. picante: R tools for integrating phylogenies and ecology. R package version 0.7-2. http://picante.r-forge.r-project.org
+S.W. Kembel, D.D. Ackerly, S.P. Blomberg, W.K. Cornwell, P.D. Cowan, M.R. Helmus, H. Morlon and C.O. Webb. 2009. picante: R tools for integrating phylogenies and ecology. R package version 1.0-0. http://picante.r-forge.r-project.org
 </li></ul>
 </p>
 
 <h2>Release history</h2>
 <p><ul>
+<li>Version 1.0: Added raoD, unifrac, taxonomic and evolutionary distinctiveness functions. Modified phylosor to work with non-ultrametric phylogenies. Changed name of randomizeSample to randomizeMatrix. Added functions for checking taxa label matching between phylogenies and other data.</li>
 <li>Version 0.7-1: Added ses.pd function</li>
 <li>Version 0.7: comm.phylo.qr function (quantile regression of co-occurrence and phylogenetic distance). traitgram function. Changed mnnd terminology to mntd. Added phylogenetic beta diversity measures comdist/comdistnt. Abundance weighting of mpd/mntd.
 <li>Version 0.6: Bugfix release. Changes to pd and phylosor functions.</li>
