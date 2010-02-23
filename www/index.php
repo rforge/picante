@@ -35,7 +35,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <p><strong>Package maintainer:</strong> Steven Kembel</p>
 <p><strong>Developers:</strong> Peter Cowan, Matthew Helmus, Steven Kembel</p>
 <p><strong>Contributors:</strong> David Ackerly, Simon Blomberg, Will Cornwell, Peter Cowan, Matthew Helmus, Steven Kembel, Helene Morlon, Cam Webb<p>    
-<p>Development of picante has been supported by <a href="http://nserc.ca">NSERC</a>, <a href="http://www.nescent.org/index.php">NESCent</a>, and the <a href="http://code.google.com/soc/2008/">Google Summer of Code</a>.</p>
+<p>Development of picante has been supported by <a href="http://nserc.ca">NSERC</a>, <a href="http://www.nescent.org/index.php">NESCent</a>, the <a href="http://code.google.com/soc/2008/">Google Summer of Code</a>, and the <a href="http://www.moore.org/">Gordon and Betty Moore Foundation</a>.</p>
 <p>Thanks to Kyle Dexter, Catherine Graham, Nathaniel Hallinan, Nick Matzke, Alain Paquette, Juan Parra, Dan Rabosky, and Marten Winter for feedback and bug reports.</p>
 
 <h2>News</h2>
