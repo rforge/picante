@@ -24,13 +24,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <body>
 
 <div id = "header">
-<h1 align="center">picante: R tools for integrating phylogenies and ecology</h1>
+<h1 align="center">Picante: R tools for integrating phylogenies and ecology</h1>
 </div>
 
 <div id = "content">
 <img border=3 src="picante.jpg" alt="picante traitgram" align="right" />
-<h2>About picante</h2>
-<p>The picante package provides tools for <strong>P</strong>hylocom <strong>i</strong>ntegration, <strong>c</strong>ommunity <strong>a</strong>nalyses, <strong>n</strong>ull-models, <strong>t</strong>raits and <strong>e</strong>volution in R.</p>
+<h2>About Picante</h2>
+<p>The Picante package provides tools for <strong>P</strong>hylocom <strong>i</strong>ntegration, <strong>c</strong>ommunity <strong>a</strong>nalyses, <strong>n</strong>ull-models, <strong>t</strong>raits and <strong>e</strong>volution in R.</p>
 <p>The package includes functions for analyzing the phylogenetic and trait diversity of ecological communities, comparative analyses, and the display and manipulation of phenotypic and phylogenetic data.</p>
 <p><strong>Package maintainer:</strong> Steven Kembel</p>
 <p><strong>Developers:</strong> Peter Cowan, Matthew Helmus, Steven Kembel</p>
@@ -40,7 +40,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>News</h2>
 <ul>
-<li>Picante 1.0 has been released</li>
+<li>Picante 1.1 has been released</li>
 <li>Lots of changes and new features in version 1.0!
 <ul>
 <li>Calculate Rao's quadratic entropy (alpha and beta diversity taking phylogenetic distinctiveness into account)</li>
@@ -85,23 +85,25 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Obtaining picante</h2>
 <ul>
-<li>Version 1.0-0 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>Version 1.1-0 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
 <li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
 </ul>
 
 <h2>Obtaining help and more information about picante</h2>
+<p>There is a package vignette with more information about Picante data formats and analysis examples. Download it <a href="picante-intro.pdf">here</a>, or type <code><strong>vignette("picante-intro")</strong></code> to view within R.
 <p>Visit the <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>project summary page</strong></a> for bug reporting, feature requests, discussions, mailing lists, and access to the source code. If you have problems or questions about the code, please read the function documentation ( <code><strong>help(picante)</strong></code> ), and get in touch with us using one of the above methods.</p>
 
 <h2>Citing picante</h2>
-<p>If you use our software, please acknowledge our work by citing us! A manuscript describing the software package has been submitted. In the meantime, you can cite picante as:
+<p>If you use our software, please acknowledge our work by citing us! A manuscript describing the software package is in press pending minor revisions. In the meantime, you can cite picante as:
 <ul><li>
-S.W. Kembel, D.D. Ackerly, S.P. Blomberg, W.K. Cornwell, P.D. Cowan, M.R. Helmus, H. Morlon and C.O. Webb. 2009. picante: R tools for integrating phylogenies and ecology. R package version 1.0-0. http://picante.r-forge.r-project.org
+S.W. Kembel, D.D. Ackerly, S.P. Blomberg, W.K. Cornwell, P.D. Cowan, M.R. Helmus, H. Morlon and C.O. Webb. 2010. Picante: R tools for integrating phylogenies and ecology. R package version 1.1-0. http://picante.r-forge.r-project.org
 </li></ul>
 </p>
 
 <h2>Release history</h2>
 <p><ul>
-<li>Version 1.0: Added raoD, unifrac, taxonomic and evolutionary distinctiveness functions. Modified phylosor to work with non-ultrametric phylogenies. Changed name of randomizeSample to randomizeMatrix. Added functions for checking taxa label matching between phylogenies and other data.</li>
+<li>Version 1.1: Added package vignette, new example data set from Ives & Godfray (2006), function example code. Reinstated "richness" and "frequency" null models for ses.* functions.</li>
+<li>Version 1.0: Added raoD, unifrac, taxonomic and evolutionary distinctiveness functions. Modified phylosor to work with non-ultrametric phylogenies. Changed name of randomizeSample to randomizeMatrix. Added functions for checking taxa label matching between phylogenies and other data.</li>  
 <li>Version 0.7-1: Added ses.pd function</li>
 <li>Version 0.7: comm.phylo.qr function (quantile regression of co-occurrence and phylogenetic distance). traitgram function. Changed mnnd terminology to mntd. Added phylogenetic beta diversity measures comdist/comdistnt. Abundance weighting of mpd/mntd.
 <li>Version 0.6: Bugfix release. Changes to pd and phylosor functions.</li>
