@@ -36,7 +36,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <p><strong>Developers:</strong> Peter Cowan, Matthew Helmus, Steven Kembel</p>
 <p><strong>Contributors:</strong> David Ackerly, Simon Blomberg, Will Cornwell, Peter Cowan, Matthew Helmus, Steven Kembel, Helene Morlon, Cam Webb<p>    
 <p>Development of picante has been supported by <a href="http://nserc.ca">NSERC</a>, <a href="http://www.nescent.org/index.php">NESCent</a>, the <a href="http://code.google.com/soc/2008/">Google Summer of Code</a>, and the <a href="http://www.moore.org/">Gordon and Betty Moore Foundation</a>.</p>
-<p>Thanks to Kyle Dexter, Catherine Graham, Nathaniel Hallinan, Nick Matzke, Alain Paquette, Juan Parra, Dan Rabosky, and Marten Winter for feedback and bug reports.</p>
+<p>Thanks to Kyle Dexter, Catherine Graham, Nathaniel Hallinan, Nick Matzke, Alain Paquette, Juan Parra, Dan Rabosky, and Marten Winter for feedback and bug reports. Thanks to <a href="http://r-forge.r-project.org">R-Forge</a> for hosting the project.</p>
 
 <h2>News</h2>
 <ul>
@@ -102,7 +102,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <h2>Citing picante</h2>
 <p>If you use our software, please acknowledge our work by citing us! A manuscript describing the software package is in press. In the meantime, you can cite picante as:
 <ul><li>
-S.W. Kembel, D.D. Ackerly, S.P. Blomberg, W.K. Cornwell, P.D. Cowan, M.R. Helmus, H. Morlon and C.O. Webb. In press. Picante: R tools for integrating phylogenies and ecology. Bioinformatics.
+S.W. Kembel, P.D. Cowan, M.R. Helmus, W.K. Cornwell, H. Morlon, D.D. Ackerly, S.P. Blomberg, and C.O. Webb. In press. Picante: R tools for integrating phylogenies and ecology. Bioinformatics.
 </li></ul>
 </p>
 
@@ -121,15 +121,12 @@ S.W. Kembel, D.D. Ackerly, S.P. Blomberg, W.K. Cornwell, P.D. Cowan, M.R. Helmus
 </ul>
 </p>
 
-<! --- R-Forge Logo --- >
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-<tr><td ALIGN="center">
-<a href="http://r-forge.r-project.org"><img src="<?php echo $themeroot; ?>/images/logo.png" border="0" alt="R-Forge" /> </a> </td>
-<td ALIGN="center"><a href="http://www4.clustrmaps.com/counter/maps.php?url=http://picante.r-forge.r-project.org/" id="clustrMapsLink"><img src="http://www4.clustrmaps.com/counter/index2.php?url=http://picante.r-forge.r-project.org/" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onerror="this.onerror=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com';" />
-</a></td>
-</tr>
-</table>
-</div>
+<h2>Picante: the movie</h2>
+<p>If you liked the software, you'll love this movie depicting the history of Picante development from version 0.0 to 1.0!</p>
+<p><object width="400" height="300"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=9476569&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=9476569&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed></object></p>
+
+<p align="center"><a href="http://www4.clustrmaps.com/counter/maps.php?url=http://picante.r-forge.r-project.org/" id="clustrMapsLink"><img src="http://www4.clustrmaps.com/counter/index2.php?url=http://picante.r-forge.r-project.org/" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onerror="this.onerror=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com';" />
+</a></p>
 
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
