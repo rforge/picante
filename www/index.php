@@ -40,8 +40,14 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>News</h2>
 <ul>
-<li>Picante 1.1 has been released</li>
-<li>Lots of changes and new features in version 1.0!
+<li>A manuscript describing Picante has been accepted for publication in Bioinformatics.</li>
+<li>Picante 1.1 has been released
+<ul>
+<li>Added a package vignette with information about data formats and examples of analyses</li>
+<li>Data from Ives & Godfray (2006) now included in the package, type <code><strong>help(IvesGodfray)</code></strong> in R for more information.</li>
+</ul>
+</li>
+<li>Lots of changes and new features in version 1.0
 <ul>
 <li>Calculate Rao's quadratic entropy (alpha and beta diversity taking phylogenetic distinctiveness into account)</li>
 <li>Added more phylobeta diversity measures (UniFrac, Rao's quadratic entropy)</li>
@@ -94,9 +100,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <p>Visit the <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>project summary page</strong></a> for bug reporting, feature requests, discussions, mailing lists, and access to the source code. If you have problems or questions about the code, please read the function documentation ( <code><strong>help(picante)</strong></code> ), and get in touch with us using one of the above methods.</p>
 
 <h2>Citing picante</h2>
-<p>If you use our software, please acknowledge our work by citing us! A manuscript describing the software package is in press pending minor revisions. In the meantime, you can cite picante as:
+<p>If you use our software, please acknowledge our work by citing us! A manuscript describing the software package is in press. In the meantime, you can cite picante as:
 <ul><li>
-S.W. Kembel, D.D. Ackerly, S.P. Blomberg, W.K. Cornwell, P.D. Cowan, M.R. Helmus, H. Morlon and C.O. Webb. 2010. Picante: R tools for integrating phylogenies and ecology. R package version 1.1-0. http://picante.r-forge.r-project.org
+S.W. Kembel, D.D. Ackerly, S.P. Blomberg, W.K. Cornwell, P.D. Cowan, M.R. Helmus, H. Morlon and C.O. Webb. In press. Picante: R tools for integrating phylogenies and ecology. Bioinformatics.
 </li></ul>
 </p>
 
