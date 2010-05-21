@@ -91,7 +91,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Obtaining picante</h2>
 <ul>
-<li>Version 1.1-0 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>Version 1.1-1 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
 <li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
 </ul>
 
@@ -108,6 +108,7 @@ S.W. Kembel, P.D. Cowan, M.R. Helmus, W.K. Cornwell, H. Morlon, D.D. Ackerly, S.
 
 <h2>Release history</h2>
 <p><ul>
+<li>Version 1.1-1: Minor update to address deprecation of evolve.phylo function in ape package; deleted evolve.brownian function and changed example code.</li>
 <li>Version 1.1: Added package vignette, new example data set from Ives & Godfray (2006), function example code. Reinstated "richness" and "frequency" null models for ses.* functions.</li>
 <li>Version 1.0: Added raoD, unifrac, taxonomic and evolutionary distinctiveness functions. Modified phylosor to work with non-ultrametric phylogenies. Changed name of randomizeSample to randomizeMatrix. Added functions for checking taxa label matching between phylogenies and other data.</li>  
 <li>Version 0.7-1: Added ses.pd function</li>
