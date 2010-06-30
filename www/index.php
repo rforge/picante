@@ -40,7 +40,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>News</h2>
 <ul>
-<li>A manuscript describing Picante has been accepted for publication in Bioinformatics.</li>
+<li>A manuscript describing Picante has been published in Bioinformatics.</li>
 <li>Picante 1.1 has been released
 <ul>
 <li>Added a package vignette with information about data formats and examples of analyses</li>
@@ -102,7 +102,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <h2>Citing picante</h2>
 <p>If you use our software, please acknowledge our work by citing us! A manuscript describing the software package is in press. In the meantime, you can cite picante as:
 <ul><li>
-S.W. Kembel, P.D. Cowan, M.R. Helmus, W.K. Cornwell, H. Morlon, D.D. Ackerly, S.P. Blomberg, and C.O. Webb. In press. Picante: R tools for integrating phylogenies and ecology. Bioinformatics.
+S.W. Kembel, P.D. Cowan, M.R. Helmus, W.K. Cornwell, H. Morlon, D.D. Ackerly, S.P. Blomberg, and C.O. Webb. 2010. Picante: R tools for integrating phylogenies and ecology. Bioinformatics 26:1463-1464.
 </li></ul>
 </p>
 
