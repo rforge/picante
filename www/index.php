@@ -100,7 +100,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <p>Visit the <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>project summary page</strong></a> for bug reporting, feature requests, discussions, mailing lists, and access to the source code. If you have problems or questions about the code, please read the function documentation ( <code><strong>help(picante)</strong></code> ), and get in touch with us using one of the above methods.</p>
 
 <h2>Citing picante</h2>
-<p>If you use our software, please acknowledge our work by citing us! A manuscript describing the software package is in press. In the meantime, you can cite picante as:
+<p>If you use our software, please acknowledge our work by citing us:
 <ul><li>
 S.W. Kembel, P.D. Cowan, M.R. Helmus, W.K. Cornwell, H. Morlon, D.D. Ackerly, S.P. Blomberg, and C.O. Webb. 2010. Picante: R tools for integrating phylogenies and ecology. Bioinformatics 26:1463-1464.
 </li></ul>
