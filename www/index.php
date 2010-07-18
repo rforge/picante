@@ -41,9 +41,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <h2>News</h2>
 <ul>
 <li>A manuscript describing Picante has been published in Bioinformatics.</li>
-<li>Picante 1.1 has been released
+<li>Picante 1.2 has been released
 <ul>
-<li>Added a package vignette with information about data formats and examples of analyses</li>
+<li>Contains a package vignette with information about data formats and examples of analyses</li>
 <li>Data from Ives & Godfray (2006) now included in the package, type <code><strong>help(IvesGodfray)</code></strong> in R for more information.</li>
 </ul>
 </li>
@@ -91,7 +91,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Obtaining picante</h2>
 <ul>
-<li>Version 1.1-1 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>Version 1.2-0 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
 <li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
 </ul>
 
@@ -108,6 +108,7 @@ S.W. Kembel, P.D. Cowan, M.R. Helmus, W.K. Cornwell, H. Morlon, D.D. Ackerly, S.
 
 <h2>Release history</h2>
 <p><ul>
+<li>Version 1.2: Bugfix release. Fix to evol.distinct function. Kcalc now behaves better with non-ultrametric trees.</li>
 <li>Version 1.1-1: Minor update to address deprecation of evolve.phylo function in ape package; deleted evolve.brownian function and changed example code.</li>
 <li>Version 1.1: Added package vignette, new example data set from Ives & Godfray (2006), function example code. Reinstated "richness" and "frequency" null models for ses.* functions.</li>
 <li>Version 1.0: Added raoD, unifrac, taxonomic and evolutionary distinctiveness functions. Modified phylosor to work with non-ultrametric phylogenies. Changed name of randomizeSample to randomizeMatrix. Added functions for checking taxa label matching between phylogenies and other data.</li>  
