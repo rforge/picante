@@ -36,17 +36,17 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <p><strong>Developers:</strong> Peter Cowan, Matthew Helmus, Steven Kembel</p>
 <p><strong>Contributors:</strong> David Ackerly, Simon Blomberg, Will Cornwell, Peter Cowan, Matthew Helmus, Steven Kembel, Helene Morlon, Cam Webb<p>    
 <p>Development of picante has been supported by <a href="http://nserc.ca">NSERC</a>, <a href="http://www.nescent.org/index.php">NESCent</a>, the <a href="http://code.google.com/soc/2008/">Google Summer of Code</a>, and the <a href="http://www.moore.org/">Gordon and Betty Moore Foundation</a>.</p>
-<p>Thanks to Kyle Dexter, Catherine Graham, Nathaniel Hallinan, Nick Matzke, Alain Paquette, Emmanuel Paradis, Juan Parra, Dan Rabosky, and Marten Winter for feedback and bug reports. Thanks to <a href="http://r-forge.r-project.org">R-Forge</a> for hosting the project.</p>
+<p>Thanks to Jonathan Davies, Kyle Dexter, Catherine Graham, Nathaniel Hallinan, Nick Matzke, Alain Paquette, Emmanuel Paradis, Juan Parra, Dan Rabosky, and Marten Winter for feedback and bug reports. Thanks to <a href="http://r-forge.r-project.org">R-Forge</a> for hosting the project.</p>
 
 <h2>News</h2>
 <ul>
 <li>A manuscript describing Picante has been published in Bioinformatics.</li>
-<li>Picante 1.3 has been released
+<li>Picante 1.4 has been released
 <ul>
-<li>The phylogenetic community dissimilarity (PCD) of Ives and Helmus (2010) is now included in function pcd</li>
+<li>The phylogenetic generalized linear mixed models of Ives and Helmus (2011) are now included in function pglmm</li>
 </ul>
 </li>
-<li>Lots of changes and new features in version 1.0
+<li>Lots of changes and new features since version 1.0
 <ul>
 <li>Calculate Rao's quadratic entropy (alpha and beta diversity taking phylogenetic distinctiveness into account)</li>
 <li>Added more phylobeta diversity measures (UniFrac, Rao's quadratic entropy)</li>
@@ -83,14 +83,15 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
         </ul>
     </li>
     </ul>
-<li>Ives and Godfray's (2006) phylogenetic bipartite linear model.
+<li>Ives and Godfray's (2006) phylogenetic bipartite linear model.</li>
+<li>Ives and Helmus's (2011) phylogenetic generalized linear mixed models.</li>
 <li>Utility functions to read/write data in <a href="http://phylodiversity.net/phylocom/">Phylocom</a> format</li>
 <li>Tree plotting and labelling functions</li>
 </ul>
 
 <h2>Obtaining picante</h2>
 <ul>
-<li>Version 1.3-0 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>Version 1.4-0 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
 <li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
 </ul>
 
@@ -107,6 +108,7 @@ S.W. Kembel, P.D. Cowan, M.R. Helmus, W.K. Cornwell, H. Morlon, D.D. Ackerly, S.
 
 <h2>Release history</h2>
 <p><ul>
+<li>Version 1.4: Add pglmm methods from Ives & Helmus (2011). Correct typos in vignette and documentation.</li>
 <li>Version 1.3: Add function pcd. Fix single-community error in pse.</li>
 <li>Version 1.2: Bugfix release. Fix to evol.distinct function. Kcalc now behaves better with non-ultrametric trees.</li>
 <li>Version 1.1-1: Minor update to address deprecation of evolve.phylo function in ape package; deleted evolve.brownian function and changed example code.</li>
