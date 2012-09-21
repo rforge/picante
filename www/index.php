@@ -44,6 +44,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <li>Picante 1.4 has been released
 <ul>
 <li>The phylogenetic generalized linear mixed models of Ives and Helmus (2011) are now included in function pglmm</li>
+<li>The function <code>pic.circular<code> has been deprecated until further testing can be performed.</li>
 </ul>
 </li>
 <li>Lots of changes and new features since version 1.0
@@ -91,7 +92,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Obtaining picante</h2>
 <ul>
-<li>Version 1.4-0 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>Version 1.4-2 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
 <li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
 </ul>
 
@@ -108,7 +109,7 @@ S.W. Kembel, P.D. Cowan, M.R. Helmus, W.K. Cornwell, H. Morlon, D.D. Ackerly, S.
 
 <h2>Release history</h2>
 <p><ul>
-<li>Version 1.4: Add pglmm methods from Ives & Helmus (2011). Correct typos in vignette and documentation.</li>
+<li>Version 1.4: Add pglmm methods from Ives & Helmus (2011). Correct typos in vignette and documentation. Remove pic.circular function until further testing can be performed.</li>
 <li>Version 1.3: Add function pcd. Fix single-community error in pse.</li>
 <li>Version 1.2: Bugfix release. Fix to evol.distinct function. Kcalc now behaves better with non-ultrametric trees.</li>
 <li>Version 1.1-1: Minor update to address deprecation of evolve.phylo function in ape package; deleted evolve.brownian function and changed example code.</li>
