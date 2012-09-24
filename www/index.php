@@ -44,7 +44,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <li>Picante 1.4 has been released
 <ul>
 <li>The phylogenetic generalized linear mixed models of Ives and Helmus (2011) are now included in function pglmm</li>
-<li>The function <code>pic.circular<code> has been deprecated until further testing can be performed.</li>
+<li>The function <code>pic.circular</code> has been deprecated until further testing can be performed.</li>
 </ul>
 </li>
 <li>Lots of changes and new features since version 1.0
