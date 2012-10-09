@@ -44,7 +44,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <li>Picante 1.5 has been released
 <ul>
 <li>The phylogenetic generalized linear mixed models of Ives and Helmus (2011) are now included in function <code>pglmm</code></li>
-<li>The function <code>pic.circular</code> has been deprecated until further testing can be performed.</li>
+<li>The functions <code>pic.circular</code> and <code>pic3</code> have been deprecated.</li>
 <li>Code for rapid estimation of expected phylogenetic diversity and the edge abundance distribution (O'Dwyer et al. 2012) is now included in functions <code>expected.pd</code> and <code>ead</code>.
 </ul>
 </li>
