@@ -40,20 +40,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>News</h2>
 <ul>
-<li>A manuscript describing Picante has been published in Bioinformatics.</li>
-<li>Picante 1.5 has been released
+<li>Picante 1.6 has been released
 <ul>
-<li>The phylogenetic generalized linear mixed models of Ives and Helmus (2011) are now included in function <code>pglmm</code></li>
-<li>The functions <code>pic.circular</code> and <code>pic3</code> have been deprecated.</li>
-<li>Code for rapid estimation of expected phylogenetic diversity and the edge abundance distribution (O'Dwyer et al. 2012) is now included in functions <code>expected.pd</code> and <code>ead</code>.
-</ul>
-</li>
-<li>Lots of changes and new features since version 1.0
-<ul>
-<li>Calculate Rao's quadratic entropy (alpha and beta diversity taking phylogenetic distinctiveness into account)</li>
-<li>Added more phylobeta diversity measures (UniFrac, Rao's quadratic entropy)</li>
-<li>Changed name of randomizeSample to randomizeMatrix for consistency with other functions</li>
-<li>Added automatic checks to ensure taxa labels in phylogeny and other data sets match</li>
+<li>Added methods for phylogenetic estimation of trait values for unobserved taxa (Kembel et al. 2012 PLOS Comp Biol).</li>
 </ul>
 </li>
 </ul>
@@ -63,6 +52,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <li>Community phylogenetic and trait diversity</li>
     <ul>
     <li>Faith's PD (phylogenetic diversity), standardized effect size of PD, expected PD of subsets of a phylogenetic tree.</li>
+    <li>Rapid estimation of PD (O'Dwyer et al. 2012)</li>
     <li>Webb's NRI/NTI and related measures of standardized effect size of community phylogenetic structure.</li>
     <li>Mean pairwise distance and mean distance to nearest taxon among co-occurring species (can be used with any interspecific distance measure). Distances can be calculated based on presence or abundance in samples.</li>
     <li>Rao's quadratic entropy, a measure of diversity within and among communities optionally taking phylogenetic distinctiveness into account.</li>
@@ -73,7 +63,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     <li>Numerous phylogenetic beta diversity measures (PCD, phylosor, UniFrac, betaMPD, betaMNTD, Rao's quadratic entropy).</li>
     </ul>
 <li>Phylogenetic signal (Blomberg <em>et al.</em>'s K statistic and P-value based on randomization test)</li>
-<li>Independent contrasts for traits with circular distributions</li>
+<li>Estimtion of trait values for unobserved taxa (Kembel et al. 2012 PLOS Comp Biol)</li>
 <li>Null models for community and phylogeny randomization</li>
     <ul>
     <li>Shuffle taxa labels across tips of phylogeny</li>
@@ -110,6 +100,7 @@ S.W. Kembel, P.D. Cowan, M.R. Helmus, W.K. Cornwell, H. Morlon, D.D. Ackerly, S.
 
 <h2>Release history</h2>
 <p><ul>
+<li>Version 1.6: Add phylogenetic trait estimation for unobserved taxa (Kembel et al. 2012).</li>
 <li>Version 1.5: Add expected.pd and ead functions to estimate expected phylogenetic diversity and edge abundance distribution (O'Dwyer et al. 2012).</li>
 <li>Version 1.4: Add pglmm methods from Ives & Helmus (2011). Correct typos in vignette and documentation. Remove pic.circular function until further testing can be performed.</li>
 <li>Version 1.3: Add function pcd. Fix single-community error in pse.</li>
