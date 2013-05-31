@@ -83,7 +83,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>Obtaining picante</h2>
 <ul>
-<li>Version 1.5-0 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
+<li>Version 1.6-0 is available on <a href="http://cran.r-project.org/">CRAN</a>. Simply type <strong><code>install.packages("picante")</code></strong> from within R.</li>
 <li>You can grab the latest nightly build <a href="http://r-forge.r-project.org/R/?group_id=134">here</a>, or by typing <strong><code>install.packages("picante",repos="http://R-Forge.R-project.org")</code></strong> from within R.</li>
 </ul>
 
@@ -100,7 +100,7 @@ S.W. Kembel, P.D. Cowan, M.R. Helmus, W.K. Cornwell, H. Morlon, D.D. Ackerly, S.
 
 <h2>Release history</h2>
 <p><ul>
-<li>Version 1.6: Add phylogenetic trait estimation for unobserved taxa (Kembel et al. 2012).</li>
+<li>Version 1.6: Add phyEstimate and phyEstimateDisc - phylogenetic trait estimation for unobserved taxa (Kembel et al. 2012).</li>
 <li>Version 1.5: Add expected.pd and ead functions to estimate expected phylogenetic diversity and edge abundance distribution (O'Dwyer et al. 2012).</li>
 <li>Version 1.4: Add pglmm methods from Ives & Helmus (2011). Correct typos in vignette and documentation. Remove pic.circular function until further testing can be performed.</li>
 <li>Version 1.3: Add function pcd. Fix single-community error in pse.</li>
