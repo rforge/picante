@@ -35,7 +35,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>News</h2>
 
-<h3>The <a href="https://cran.r-project.org/web/packages/picante/index.html">picante package</a> is available on CRAN</h3>
+<h3>The <a href="https://cran.r-project.org/web/packages/picante/index.html">picante package</a> is available on CRAN.</h3>
 
 <h3>Development of picante has been moved to Github. Please update your bookmarks to the new homepage for picante at <a href="https://github.com/skembel/picante">https://github.com/skembel/picante</a>.</h3>
 
