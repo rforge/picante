@@ -35,9 +35,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <h2>News</h2>
 
-<h3>Development of picante has been moved to Github. Please update your booksmarks to the new homepage for picante at <a href="https://github.com/skembel/picante">https://github.com/skembel/picante</a>.</h3>
+<h3>The <a href="https://cran.r-project.org/web/packages/picante/index.html">picante package</a> is available on CRAN</h3>
 
-<p><strong>The version of the code at R-Forge is out of date and no longer updated.</strong> For bug reports, feature requests, and discussion please use Github.</h4>
+<h3>Development of picante has been moved to Github. Please update your bookmarks to the new homepage for picante at <a href="https://github.com/skembel/picante">https://github.com/skembel/picante</a>.</h3>
+
+<h3>The version of the code at R-Forge is out of date and no longer updated.</h3>
+
+<p>For bug reports, feature requests, and discussion please use Github.</p>
 
 
 <h2>Picante: the movie</h2>
